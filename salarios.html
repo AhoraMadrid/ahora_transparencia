@@ -264,14 +264,14 @@
      
      var donutData = []; // donut graph data
       
-     Papa.parse("datos_03/salarios.csv", {
+     Papa.parse("datos_03/salarios_2015_6.csv", {
      	download: true,
      	header: true,
      	delimiter: "\t",	
      	complete: function(results) {
      		console.log("parsed");
      		 //console.log(results.data);
-     		
+     		resultados=results
      		var meses = []; // todos MM_AAAA
      		var mesesR = []; // rótulos MM, AAAA
        		var mesesL = []; // labels
@@ -282,7 +282,9 @@
        		var peopleDataRow = []; // data Objects
      		
      		$.each( results.data, function( index, value ) {
+
      			 var obj = value;
+                 if( ("fecha" in obj)==false || ("id" in obj) == false || ("nombre" in obj) == false  || ("apellidos" in obj)== false) return true;
      			 var miMes = moment(obj.fecha, "DD/MM/YYYY").format("MMMM");
      			 var miAnno = moment(obj.fecha, "DD/MM/YYYY").format("YYYY");
      			 var mes_anno = miMes +"_" + miAnno;
@@ -346,7 +348,7 @@
 			
      	$.each( results.data, function( index, value ) {
       		 var obj = value;
-     		  
+     		 if( ("fecha" in obj)==false || ("id" in obj) == false || ("nombre" in obj) == false  || ("apellidos" in obj)== false) return true;
      		 // tot by month
      		 var miMMMM = moment(obj.fecha, "DD/MM/YYYY").format("MMMM");
      		 var miAAAA = moment(obj.fecha, "DD/MM/YYYY").format("YYYY");
@@ -366,6 +368,7 @@
      		 mesesTot[miMM_AAAA].donaciones += parseFloat(obj.donacion_2);
      		  
      		 // totals
+             console.log(obj)
      		 totC['nominal'] += parseFloat(obj.s_nominal);
      		 totC['percibido'] += parseFloat(obj.s_percibido);
      		 totC['goteo'] += parseFloat(obj.goteo);
