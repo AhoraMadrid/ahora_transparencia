@@ -452,7 +452,8 @@
                 $(div).append( "<div class='bg_t4 bloque'></div>" );
                  
                 // content: image
-                $(div).append( "<img src='img/people/user.png' />" );
+              //  console.log(obj)
+                $(div).append( "<img src='img/people/"+peopleID[i]+".jpg' />" );
                 $(div).append( "<p class='nombre'>" + obj.nombre + " " +obj.apellidos +"</p>" );
                 $(div).append("<hr/>");
                 
@@ -474,6 +475,7 @@
                 
                 
                 $("#concejales").append(div);
+                
             
             } else {
             // eventual
@@ -486,16 +488,18 @@
                 myRow += "<td class='money'>" + obj.donaciones + "</td>" ;
                                 
                 $(myTable).append( myRow);
+
+              //  console.log("append eventual");
                     
             }
+            //console.log("fin append concejal" + obj.nombre);
         
         }
-
-        initC();
+        window.setTimeout(initC, 100); //ñaaaapa
         } // end complete loading json
         
      }); // end pepa parse
-
+console.log("fin document ready");
     }); //end document ready 
      
      
@@ -521,6 +525,7 @@
         });     
       
       // isotope
+      console.log($(''))
       var $grid = $('#concejales').isotope({
         // options
         itemSelector: '.card',
