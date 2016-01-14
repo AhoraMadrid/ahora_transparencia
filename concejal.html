@@ -76,7 +76,7 @@
     
      <div class="col-md-3 nopaddingR">
      <hr/>
-     <img src="img/people/user.png" alt="" />
+     <img id="miFoto" src="img/people/user.png" alt="" />
      </div>
     </div>
     
@@ -197,266 +197,269 @@
      <!-- cookies -->
      <script src="js/js.cookie.js"></script>
      
-     <script>
-     
-     
-     var c = Cookies.get('concejal')
-     var thisID = "c02";
-     
-     if(c === "undefined"){
-     	// nothing
-     } else {
-     	 thisID = c;
-     }
-      
-     var totC = {nominal:0.0, percibido:0.0, goteo:0.0, donacion:0.0};
-     moment.locale('es');  // translate dates to es format
-     
-     var myTable =  $("#salarios_meses > tbody");
-      
-     Papa.parse("datos_03/salarios.csv", {
-     	download: true,
-     	header: true,
-     	delimiter: "\t",	
-     	complete: function(results) {
-     		 //console.log(results.data);
-     		
-     		/*
-     		var meses = []; // todos MM_AAAA
-     		var mesesR = []; // rótulos MM, AAAA
-       		var mesesL = []; // labels
-       		*/
-       		
-       		var peopleID = []; // just ID // once
-       		var peopleIDRow = []; // just ID
-       		var peopleData = []; // data Objects // once
-       		var peopleDataRow = []; // data Objects
-     		
-     		$.each( results.data, function( index, value ) {
-     			 var obj = value;
-     			 
-     			 // myTable
-     			 if(obj.id === thisID){
-     			 
-     			 var miMes = moment(obj.fecha, "DD/MM/YYYY").format("MMMM");
-     			 var miAnno = moment(obj.fecha, "DD/MM/YYYY").format("YYYY");
-     			 // var mes_anno = miMes +"_" + miAnno;
-     			 var mesYanno = miMes +", " + miAnno;
-     			 
-     			 
-     			 var myRow = "<tr>";
-     			 myRow += "<td>" + mesYanno + "</td>" ; // mes, año
-     			 myRow += "<td class='money'>" + obj.s_nominal + "</td>" ;
-     			 myRow += "<td class='money'>" + obj.s_percibido + "</td>" ;
-     			 myRow += "<td class='money'>" + obj.goteo + "</td>" ;
-     			 myRow += "<td class='money'>" + obj.donacion_1 + "</td>" ;
-     			 myRow += "<td>" + obj.favor_1 + "</td>" ; 
-     			 myRow += "<td class='money'>" + obj.donacion_2 + "</td>" ;
-     			 myRow += "<td>" + obj.favor_2 + "</td>" ; 
-     			 	
-     			 $(myTable).append( myRow);
-     			 
-     			 totC['nominal'] += parseFloat(obj.s_nominal);
-     			 totC['percibido'] += parseFloat(obj.s_percibido);
-     			 totC['goteo'] += parseFloat(obj.goteo);
-     			 totC['donacion'] += parseFloat(obj.donacion_1);
-     			 totC['donacion'] += parseFloat(obj.donacion_2);
-     			 	
-     			 }
-     			 
-     			 /*
-     			 if(obj.id === thisID){
-     			 	var miMes = moment(obj.fecha, "DD/MM/YYYY").format("MMMM");
-     			 	var miAnno = moment(obj.fecha, "DD/MM/YYYY").format("YYYY");
-     			 	var mes_anno = miMes +"_" + miAnno;
-     			 	var mesYanno = miMes +", " + miAnno;
-     			 	 
-     			 	meses.push(mes_anno);
-     			 	mesesR.push(mesYanno);
-     			 }
-     			 */
-     			 peopleIDRow.push(obj.id); 
-     			 peopleDataRow[obj.id] = {nombre: obj.nombre, apellidos: obj.apellidos, status: obj.status, nominal: 0.0, percibido: 0.0, goteo: 0.0, donaciones: 0.0};
-     		});	
-     		
-     		$.each(peopleIDRow, function(i, el){
-     		    if($.inArray(el, peopleID) === -1){
-     		   	 peopleID.push(el);
-     		    }
-     		});
-     		
-     		for (i = 0; i < peopleID.length; i++) { 
-     			var ID = peopleID[i];
-     			var P = peopleDataRow[ID];
-     			peopleData[ID] = P;
-        	}
-        	   		
-     		var peopleIDRow = []; // clean up
-     		var peopleDataRow = [];
-     		
-     		/*		
-     		var thisM = meses[0];
-     		mesesL.push(thisM);
-     		
-     		var mesesTot = {};
-     		mesesTot[thisM] = {nominal: 0.0, percibido: 0.0, goteo: 0.0, donaciones: 0.0};
-	
-     		var mesesRot = []; 
-     		mesesRot.push(mesesR[0]);
-     		
-     		for (i = 0; i < meses.length -1; i++) { 
-     		    var nextM = meses[i+1];
-     		    
-     		    if(thisM == nextM){
-     		    // nothing
-     		    } else {
-     		    	thisM = nextM;
-     		    	mesesL.push(thisM);
-     		    	mesesTot[thisM] = {nominal: 0.0, percibido: 0.0, goteo: 0.0, donaciones: 0.0};
-     		    	mesesRot.push(mesesR[i+1]);
-     		    }
-     		}
-     		*/
-			
-     	$.each( results.data, function( index, value ) {
-      		 var obj = value;
-     		  
-     		 // tot by month
-     		 /*
-     		 var miMMMM = moment(obj.fecha, "DD/MM/YYYY").format("MMMM");
-     		 var miAAAA = moment(obj.fecha, "DD/MM/YYYY").format("YYYY");
-     		 var miMM_AAAA = miMMMM + "_" + miAAAA;
-     		 */
-     		 
-     		 // tot by people // all people
-     		 peopleData[obj.id].nominal += parseFloat(obj.s_nominal);
-     		 peopleData[obj.id].percibido += parseFloat(obj.s_percibido);
-     		 peopleData[obj.id].goteo += parseFloat(obj.goteo);
-     		 peopleData[obj.id].donaciones += parseFloat(obj.donacion_1);
-     		 peopleData[obj.id].donaciones += parseFloat(obj.donacion_2);
-     		 
-     		 /*
-     		 mesesTot[miMM_AAAA].nominal += parseFloat(obj.s_nominal);
-     		 mesesTot[miMM_AAAA].percibido += parseFloat(obj.s_percibido);
-     		 mesesTot[miMM_AAAA].goteo += parseFloat(obj.goteo);
-     		 mesesTot[miMM_AAAA].donaciones += parseFloat(obj.donacion_1);
-     		 mesesTot[miMM_AAAA].donaciones += parseFloat(obj.donacion_2);
-     		 */
-     		 
-     		 // totals
-     		 /*
-     		 totC['nominal'] += parseFloat(obj.s_nominal);
-     		 totC['percibido'] += parseFloat(obj.s_percibido);
-     		 totC['goteo'] += parseFloat(obj.goteo);
-     		 totC['donacion'] += parseFloat(obj.donacion_1);
-     		 totC['donacion'] += parseFloat(obj.donacion_2);
-     		  
-     		 totC[obj.status] += parseFloat(obj.s_percibido);
-     		 */
-     	});	
-     	
+     <script>     
+     $(document).ready(function() { 
+             var c = Cookies.get('concejal')
+             var thisID = "c02";             
+             if(c === "undefined"){
+                // nothing
+             } else {
+                 thisID = c;
+             }              
+             var totC = {nominal:0.0, percibido:0.0, goteo:0.0, donacion:0.0};
+             moment.locale('es');  // translate dates to es format
+             
+             var myTable =  $("#salarios_meses > tbody");
+              
+             Papa.parse("datos_03/salarios.csv", {
+                download: true,
+                header: true,
+                delimiter: "\t",    
+                complete: function(results) {
+                     //console.log(results.data);
+                    
+                    /*
+                    var meses = []; // todos MM_AAAA
+                    var mesesR = []; // rótulos MM, AAAA
+                    var mesesL = []; // labels
+                    */
+                    
+                    var peopleID = []; // just ID // once
+                    var peopleIDRow = []; // just ID
+                    var peopleData = []; // data Objects // once
+                    var peopleDataRow = []; // data Objects
+                    
+                    $.each( results.data, function( index, value ) {
+                         var obj = value;
+                         
+                         // myTable
+                         if(obj.id === thisID){
+                         
+                         var miMes = moment(obj.fecha, "DD/MM/YYYY").format("MMMM");
+                         var miAnno = moment(obj.fecha, "DD/MM/YYYY").format("YYYY");
+                         // var mes_anno = miMes +"_" + miAnno;
+                         var mesYanno = miMes +", " + miAnno;
+                         
+                         
+                         var myRow = "<tr>";
+                         myRow += "<td>" + mesYanno + "</td>" ; // mes, año
+                         myRow += "<td class='money'>" + obj.s_nominal + "</td>" ;
+                         myRow += "<td class='money'>" + obj.s_percibido + "</td>" ;
+                         myRow += "<td class='money'>" + obj.goteo + "</td>" ;
+                         myRow += "<td class='money'>" + obj.donacion_1 + "</td>" ;
+                         myRow += "<td>" + obj.favor_1 + "</td>" ; 
+                         myRow += "<td class='money'>" + obj.donacion_2 + "</td>" ;
+                         myRow += "<td>" + obj.favor_2 + "</td>" ; 
+                            
+                         $(myTable).append( myRow);
+                         
+                         totC['nominal'] += parseFloat(obj.s_nominal);
+                         totC['percibido'] += parseFloat(obj.s_percibido);
+                         totC['goteo'] += parseFloat(obj.goteo);
+                         totC['donacion'] += parseFloat(obj.donacion_1);
+                         totC['donacion'] += parseFloat(obj.donacion_2);
+                            
+                         }  
+                                                
+                         /*
+                         if(obj.id === thisID){
+                            var miMes = moment(obj.fecha, "DD/MM/YYYY").format("MMMM");
+                            var miAnno = moment(obj.fecha, "DD/MM/YYYY").format("YYYY");
+                            var mes_anno = miMes +"_" + miAnno;
+                            var mesYanno = miMes +", " + miAnno;
+                             
+                            meses.push(mes_anno);
+                            mesesR.push(mesYanno);
+                         }
+                         */
 
-     	
-     	/*
-     	for (i = 0; i < mesesL.length; i++) { 
-     		var thisM = mesesL[i];
-     		
-     		var myRow = "<tr>";
-     		myRow += "<td>" + mesesRot[i] + "</td>" ; // mes, año
-     		myRow += "<td class='money'>" + mesesTot[thisM].nominal + "</td>" ;
-     		myRow += "<td class='money'>" + mesesTot[thisM].percibido + "</td>" ;
-     		myRow += "<td class='money'>" + mesesTot[thisM].goteo + "</td>" ;
-     		myRow += "<td class='money'>" + mesesTot[thisM].donaciones + "</td>" ;
-     		     		
-     		$(myTable).append( myRow);
-     	}
-     	*/
-     	
-     	// write total(s)
-     	$("#totalG .bg_tot p.importe").text(totC['nominal']);
-     	$("#partes .bg_t1 p.importe").text(totC['percibido']);
-     	// $("#partes .bg_t2 p.importe").text(totC['e']);
-     	$("#partes .bg_t3 p.importe").text(totC['goteo']);
-     	$("#partes .bg_t4 p.importe").text(totC['donacion']);
-     	
-     	// calculate width
-     	var t1W = totC['percibido'] * 100.00 / totC['nominal'];
-     	var t2W = totC['e'] * 100.00 / totC['nominal'];
-     	var t3W = totC['goteo'] * 100.00 / totC['nominal'];
-     	var t4W = totC['donacion'] * 100.00 / totC['nominal'];
-     	var t0W = totC['percibido'] * 100.00 / totC['nominal'];	
-     	
-     	// update % texts
-     	/*
-     	$('#d1').text(t0W.toFixed(1) + '%');
-     	$('#d2').text(t3W.toFixed(1) + '%');
-     	$('#d3').text(t4W.toFixed(1) + '%');
-     	*/
-     	
-     	// assign width
-     	$('#partes .bg_t1').css({width: t1W.toFixed(4) + '%'});
-     	$('#partes .bg_t2').css({width: t2W.toFixed(4) + '%'});
-     	$('#partes .bg_t3').css({width: t3W.toFixed(4) + '%'});
-     	$('#partes .bg_t4').css({width: t4W.toFixed(4) + '%'});
-     	 	
-     	// cards concejales / table eventuales
-     	// var myTable =  $("#salarios_eventuales > tbody");
-     	
-     	var  miObj = peopleData[thisID];
-     	$("#miNombre").text(miObj.nombre);
-     	$("#miApellido").text(miObj.apellidos);
-     	
-     	for (i = 0; i < peopleID.length; i++) { 
-     	
-     		var miID = peopleID[i];
-     		var obj = peopleData[miID];
-     		
-     		if(obj.status === "c"){
-     			// concejal
-     			var div = document.createElement("div");
-     			
-     			//$(div).attr("class", obj.cat);
-     			$(div).addClass("card");
-     			
-     			// data: id
-     			$(div).data( "id",miID );
-     			
-     			// content: graph
-     			$(div).append( "<div class='bg_tot bloque'></div>" );
-     			$(div).append( "<div class='bg_t1 bloque'></div>" );
-     			$(div).append( "<div class='bg_t3 bloque'></div>" );
-     			$(div).append( "<div class='bg_t4 bloque'></div>" );
-     			 
-     			// content: image
-     			$(div).append( "<img src='img/people/user.png' />" );
-     			$(div).append( "<p class='nombre'>" + obj.nombre + " " +obj.apellidos +"</p>" );
-     			$(div).append("<hr/>");
-     			
-     			$(div).append( "<p class='parcial c1'>percibido: <span class='money'>"  + obj.percibido + "</span></p>" );
-     			$(div).append( "<p class='parcial c3'>goteo: <span class='money'>"  + obj.goteo + "</span></p>" );
-     			$(div).append( "<p class='parcial c4'>donaciones: <span class='money'>"  + obj.donaciones + "</span></p>" );
-     			
-     			$(div).append( "<p class='importe money'>" + obj.nominal +"</p>" );
-     			 			
-     			// calculate and assign width
-     			var t1W = obj.percibido * 100.00 / obj.nominal;
-     			var t2W = obj.goteo * 100.00 / obj.nominal;
-     			var t3W = obj.donaciones * 100.00 / obj.nominal;
-     			     			
-     			$(div).children('.bg_t1').css({width: t1W.toFixed(4) + '%'});
-     			$(div).children('.bg_t3').css({width: t2W.toFixed(4) + '%'});
-     			$(div).children('.bg_t4').css({width: t3W.toFixed(4) + '%'});
-     			
-     			$("#concejales").append(div);
-     		
-     		} 
-     	
-     	}
-     	
-     	 initC();
-     	}
-     });
+                         peopleIDRow.push(obj.id); 
+                         peopleDataRow[obj.id] = {nombre: obj.nombre, apellidos: obj.apellidos, status: obj.status, nominal: 0.0, percibido: 0.0, goteo: 0.0, donaciones: 0.0};
+                    }); 
+                    
+                    $.each(peopleIDRow, function(i, el){
+                        if($.inArray(el, peopleID) === -1){
+                         peopleID.push(el);
+                        }
+                    });
+                    
+                    for (i = 0; i < peopleID.length; i++) { 
+                        var ID = peopleID[i];
+                        var P = peopleDataRow[ID];
+                        peopleData[ID] = P;
+                    }
+                            
+                    var peopleIDRow = []; // clean up
+                    var peopleDataRow = [];
+                    
+                    /*      
+                    var thisM = meses[0];
+                    mesesL.push(thisM);
+                    
+                    var mesesTot = {};
+                    mesesTot[thisM] = {nominal: 0.0, percibido: 0.0, goteo: 0.0, donaciones: 0.0};
+            
+                    var mesesRot = []; 
+                    mesesRot.push(mesesR[0]);
+                    
+                    for (i = 0; i < meses.length -1; i++) { 
+                        var nextM = meses[i+1];
+                        
+                        if(thisM == nextM){
+                        // nothing
+                        } else {
+                            thisM = nextM;
+                            mesesL.push(thisM);
+                            mesesTot[thisM] = {nominal: 0.0, percibido: 0.0, goteo: 0.0, donaciones: 0.0};
+                            mesesRot.push(mesesR[i+1]);
+                        }
+                    }
+                    */
+                    
+                $.each( results.data, function( index, value ) {
+                     var obj = value;
+                      
+                     // tot by month
+                     /*
+                     var miMMMM = moment(obj.fecha, "DD/MM/YYYY").format("MMMM");
+                     var miAAAA = moment(obj.fecha, "DD/MM/YYYY").format("YYYY");
+                     var miMM_AAAA = miMMMM + "_" + miAAAA;
+                     */
+                     
+                     // tot by people // all people
+                     peopleData[obj.id].nominal += parseFloat(obj.s_nominal);
+                     peopleData[obj.id].percibido += parseFloat(obj.s_percibido);
+                     peopleData[obj.id].goteo += parseFloat(obj.goteo);
+                     peopleData[obj.id].donaciones += parseFloat(obj.donacion_1);
+                     peopleData[obj.id].donaciones += parseFloat(obj.donacion_2);
+                     
+                     /*
+                     mesesTot[miMM_AAAA].nominal += parseFloat(obj.s_nominal);
+                     mesesTot[miMM_AAAA].percibido += parseFloat(obj.s_percibido);
+                     mesesTot[miMM_AAAA].goteo += parseFloat(obj.goteo);
+                     mesesTot[miMM_AAAA].donaciones += parseFloat(obj.donacion_1);
+                     mesesTot[miMM_AAAA].donaciones += parseFloat(obj.donacion_2);
+                     */
+                     
+                     // totals
+                     /*
+                     totC['nominal'] += parseFloat(obj.s_nominal);
+                     totC['percibido'] += parseFloat(obj.s_percibido);
+                     totC['goteo'] += parseFloat(obj.goteo);
+                     totC['donacion'] += parseFloat(obj.donacion_1);
+                     totC['donacion'] += parseFloat(obj.donacion_2);
+                      
+                     totC[obj.status] += parseFloat(obj.s_percibido);
+                     */
+                }); 
+                
+
+                
+                /*
+                for (i = 0; i < mesesL.length; i++) { 
+                    var thisM = mesesL[i];
+                    
+                    var myRow = "<tr>";
+                    myRow += "<td>" + mesesRot[i] + "</td>" ; // mes, año
+                    myRow += "<td class='money'>" + mesesTot[thisM].nominal + "</td>" ;
+                    myRow += "<td class='money'>" + mesesTot[thisM].percibido + "</td>" ;
+                    myRow += "<td class='money'>" + mesesTot[thisM].goteo + "</td>" ;
+                    myRow += "<td class='money'>" + mesesTot[thisM].donaciones + "</td>" ;
+                                
+                    $(myTable).append( myRow);
+                }
+                */
+                
+                // write total(s)
+                $("#totalG .bg_tot p.importe").text(totC['nominal']);
+                $("#partes .bg_t1 p.importe").text(totC['percibido']);
+                // $("#partes .bg_t2 p.importe").text(totC['e']);
+                $("#partes .bg_t3 p.importe").text(totC['goteo']);
+                $("#partes .bg_t4 p.importe").text(totC['donacion']);
+                
+                // calculate width
+                var t1W = totC['percibido'] * 100.00 / totC['nominal'];
+                var t2W = totC['e'] * 100.00 / totC['nominal'];
+                var t3W = totC['goteo'] * 100.00 / totC['nominal'];
+                var t4W = totC['donacion'] * 100.00 / totC['nominal'];
+                var t0W = totC['percibido'] * 100.00 / totC['nominal']; 
+                
+                // update % texts
+                /*
+                $('#d1').text(t0W.toFixed(1) + '%');
+                $('#d2').text(t3W.toFixed(1) + '%');
+                $('#d3').text(t4W.toFixed(1) + '%');
+                */
+                
+                // assign width
+                $('#partes .bg_t1').css({width: t1W.toFixed(4) + '%'});
+                $('#partes .bg_t2').css({width: t2W.toFixed(4) + '%'});
+                $('#partes .bg_t3').css({width: t3W.toFixed(4) + '%'});
+                $('#partes .bg_t4').css({width: t4W.toFixed(4) + '%'});
+                    
+                // cards concejales / table eventuales
+                // var myTable =  $("#salarios_eventuales > tbody");
+                
+                var  miObj = peopleData[thisID];
+                $("#miNombre").text(miObj.nombre);
+                $("#miApellido").text(miObj.apellidos);
+                $("#miFoto").attr("src","img/people/"+thisID+".jpg");
+
+                for (i = 0; i < peopleID.length; i++) { 
+                
+                    var miID = peopleID[i];
+                    var obj = peopleData[miID];
+                    
+                    if(obj.status === "c"){
+                        // concejal
+                        var div = document.createElement("div");
+                        
+                        //$(div).attr("class", obj.cat);
+                        $(div).addClass("card");
+                        
+                        // data: id
+                        $(div).data( "id",miID );
+                        
+                        // content: graph
+                        $(div).append( "<div class='bg_tot bloque'></div>" );
+                        $(div).append( "<div class='bg_t1 bloque'></div>" );
+                        $(div).append( "<div class='bg_t3 bloque'></div>" );
+                        $(div).append( "<div class='bg_t4 bloque'></div>" );
+                         
+                        // content: image
+                        $(div).append( "<img src='img/people/"+peopleID[i]+".jpg' />");
+                        $(div).append( "<p class='nombre'>" + obj.nombre + " " +obj.apellidos +"</p>" );
+                        $(div).append("<hr/>");
+                        
+                        $(div).append( "<p class='parcial c1'>percibido: <span class='money'>"  + obj.percibido + "</span></p>" );
+                        $(div).append( "<p class='parcial c3'>goteo: <span class='money'>"  + obj.goteo + "</span></p>" );
+                        $(div).append( "<p class='parcial c4'>donaciones: <span class='money'>"  + obj.donaciones + "</span></p>" );
+                        
+                        $(div).append( "<p class='importe money'>" + obj.nominal +"</p>" );
+                                    
+                        // calculate and assign width
+                        var t1W = obj.percibido * 100.00 / obj.nominal;
+                        var t2W = obj.goteo * 100.00 / obj.nominal;
+                        var t3W = obj.donaciones * 100.00 / obj.nominal;
+                                        
+                        $(div).children('.bg_t1').css({width: t1W.toFixed(4) + '%'});
+                        $(div).children('.bg_t3').css({width: t2W.toFixed(4) + '%'});
+                        $(div).children('.bg_t4').css({width: t3W.toFixed(4) + '%'});
+                        
+                        $("#concejales").append(div);
+                    
+                    } 
+                
+                }
+                
+                 window.setTimeout(initC, 100);
+                }
+             });
+
+          
+     }); 
      
+
      function initC() {
      $("#salarios_meses").tablesorter({ 
              // sort on the first column and third column, order asc 
@@ -464,10 +467,10 @@
          }); 
          
      $('.money').formatCurrency({
-       	decimalSymbol: ',',
-      	digitGroupSymbol: '.',
-      	symbol: '€',
-      	positiveFormat: '%n <span class="euro">%s</span>',
+        decimalSymbol: ',',
+        digitGroupSymbol: '.',
+        symbol: '€',
+        positiveFormat: '%n <span class="euro">%s</span>',
       });
       
       
@@ -485,20 +488,12 @@
       
       
       $( ".card" ).click(function() {
-      	var c = $(this ).data( "id" ); // 52
-      	Cookies.set('concejal', c, { expires: 7, path: '' });
-      	window.location.href = "concejal.html";
+        var c = $(this ).data( "id" ); // 52
+        Cookies.set('concejal', c, { expires: 7, path: '' });
+        window.location.href = "concejal.html";
         // alert( "Handler for " + c);
-      });
-     
+      });     
      }
-     
-     $(document).ready(function() { 
-        
-
-          
-     }); 
-     
 
                
     </script>
