@@ -69,9 +69,9 @@
     <div class="row">
     <div class="col-md-9 nopaddingL">
     <hr/>
-    <h2><span id="miNombre">Nombre</span> <span id="miApellido">Apellidos</span></h2>
-    <p>No se todavía de donde vamos a sacar este texto</p>
-    <p>Lectores legere me lius quod ii legunt saepius claritas est etiam processus dynamicus qui. Facer possim assum, typi non habent claritatem insitam est usus legentis in iis qui facit eorum. Demonstraverunt sequitur mutationem consuetudium lectorum mirum est notare quam.
+    <h2><span id="miNombre"></span> <span id="miApellido"></span></h2>
+    <p id="miCargo"> </p>
+    <p id="miDescripcion">
     </p>
     </div>
     
@@ -201,7 +201,7 @@
      <script>     
      $(document).ready(function() { 
              var c = Cookies.get('concejal')
-             var thisID = "c02";             
+              thisID = "c02";             
              if(c === "undefined"){
                 // nothing
              } else {
@@ -211,7 +211,22 @@
              moment.locale('es');  // translate dates to es format
              
              var myTable =  $("#salarios_meses > tbody");
-              
+             
+             /*** datos del concejal **/
+             $.getJSON( "datos_03/concejal.json", function( data ) {
+                debugDatosConcejales=data
+                data.concejales[thisID]
+                $("#miCargo").text(data.concejales[thisID][1])
+                $("#miDescripcion").text(data.concejales[thisID][2])
+                  /*var items = [];
+                  $.each( data.concejales, function( key, val ) {
+                    console.log(val)
+                  });*/
+                 
+                 
+            }); 
+
+
              Papa.parse("datos_03/salarios.csv", {
                 download: true,
                 header: true,
