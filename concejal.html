@@ -86,9 +86,9 @@
     
     <div class="row">
     <div class="col-md-12 noPadding">
-
+        Los salarios de los concejales de Ahora Madrid están limitados. La diferencia entre el salario "oficial" establecido por el pleno y el salario que cobran se destina por un lado a financiar proyectos de innovación social en la plataforma de Goteo de crowdfounding y otro porcentaje para financiar partidos y asociaciones que cada concejal elige.
     
-    <table id="salarios_meses" class="table tablesorter"> 
+    <!--<table id="salarios_meses" class="table tablesorter"> 
     <thead> 
     
     <tr> 
@@ -104,7 +104,7 @@
      
     </thead> 
     <tbody></tbody> 
-    </table> 
+    </table>  -->
     
     </div>
     </div>
@@ -113,7 +113,7 @@
      
      <div class="col-md-12 noPadding" id="totalG">
      	<div class="bg_tot bloque">
-     	<p class="concepto">salario nominal</p>
+     	<p class="concepto">salario bruto anual</p>
     	<p class="importe money">total</p>
      	</div>
      </div>
@@ -122,31 +122,48 @@
      
       <div class="row">
      
-     <div class="col-md-12 noPadding">
-     <div id="partes">
-     <div class="bg_t1 bloque">
-     <p class="concepto">salario percibido</p>
-     <p class="importe money">total</p>
-     </div>
-     
-     <!--
-     <div class="bg_t2 bloque">
-     <p class="concepto">salarios eventuales</p>
-     <p class="importe money">total</p>
-     </div>
-     -->
-     
-     <div class="bg_t3 bloque">
-     <p class="concepto">goteo</p>
-     <p class="importe money">total</p>
-     </div>
-     <div class="bg_t4 bloque">
-     <p class="concepto">donaciones</p>
-     <p class="importe money">total</p>
-     </div>
-     </div>
-     </div>
+         <div class="col-md-12 noPadding">
+             <div id="partes">
+                 <div class="bg_t1 bloque">
+                     <p class="concepto">salario limitado neto</p>
+                     <p class="importe ">14 pagas de SMI*3 </p>
+                 </div>
+                
+                 <div class="bg_t3 bloque">
+                     <p class="concepto">goteo</p>
+                     <p class="importe ">1/3 del resto</p>
+                 </div>
+                 <div class="bg_t4 bloque">
+                     <p class="concepto">donaciones</p>
+                     <p class="importe ">2/3 del resto</p>
+                 </div>
+             </div>
+         </div>
           
+     </div>
+     <div class="row">
+        <h3> Destinatarios de las donaciones </h3>
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active">
+            <a href="#periodo-0"> 15 Junio 2015 - 30 Dic 2015</a>
+          </li>          
+        </ul>
+        <div id="my-tab-content" class="tab-content">
+            <div class="tab-pane active" id="periodo-0">
+               <table id="donaciones_periodo" class="table tablesorter"> 
+                    <thead> 
+                    
+                        <tr> 
+                            <th>Destinatario</th> 
+                            <th>Cantidad</th> 
+                         </tr> 
+                     
+                    </thead> 
+                    <tbody></tbody> 
+                </table>  
+            </div>
+        </div>
+
      </div>
     
     
@@ -210,7 +227,7 @@
              var totC = {nominal:0.0, percibido:0.0, goteo:0.0, donacion:0.0};
              moment.locale('es');  // translate dates to es format
              
-             var myTable =  $("#salarios_meses > tbody");
+             var myTable =  $("#donaciones_periodo > tbody");
              
              /*** datos del concejal **/
              $.getJSON( "datos_03/concejal.json", function( data ) {
@@ -246,34 +263,55 @@
                     var peopleDataRow = []; // data Objects
                     
                     $.each( results.data, function( index, value ) {
+                        datos=results.data
                          var obj = value;
                          
-                         // myTable
-                         if(obj.id === thisID){
-                         
-                         var miMes = moment(obj.fecha, "DD/MM/YYYY").format("MMMM");
-                         var miAnno = moment(obj.fecha, "DD/MM/YYYY").format("YYYY");
-                         // var mes_anno = miMes +"_" + miAnno;
-                         var mesYanno = miMes +", " + miAnno;
-                         
-                         
-                         var myRow = "<tr>";
-                         myRow += "<td>" + mesYanno + "</td>" ; // mes, año
-                         myRow += "<td class='money'>" + obj.s_nominal + "</td>" ;
-                         myRow += "<td class='money'>" + obj.s_percibido + "</td>" ;
-                         myRow += "<td class='money'>" + obj.goteo + "</td>" ;
-                         myRow += "<td class='money'>" + obj.donacion_1 + "</td>" ;
-                         myRow += "<td>" + obj.favor_1 + "</td>" ; 
-                         myRow += "<td class='money'>" + obj.donacion_2 + "</td>" ;
-                         myRow += "<td>" + obj.favor_2 + "</td>" ; 
-                            
-                         $(myTable).append( myRow);
-                         
-                         totC['nominal'] += parseFloat(obj.s_nominal);
-                         totC['percibido'] += parseFloat(obj.s_percibido);
-                         totC['goteo'] += parseFloat(obj.goteo);
-                         totC['donacion'] += parseFloat(obj.donacion_1);
-                         totC['donacion'] += parseFloat(obj.donacion_2);
+                         // metemos los datos del concejal si es el de la pagina donde estamos
+                         if(obj.id === thisID){                         
+                             var miMes = moment(obj.fecha, "DD/MM/YYYY").format("MMMM");
+                             var miAnno = moment(obj.fecha, "DD/MM/YYYY").format("YYYY");
+                             // var mes_anno = miMes +"_" + miAnno;
+                             var mesYanno = miMes +", " + miAnno;
+                             
+                             //Aqui es donde se mete la donacion TBD TODO
+                             /*
+                             var myRow = "<tr>";
+                             myRow += "<td>" + mesYanno + "</td>" ; // mes, año
+                             myRow += "<td class='money'>" + obj.s_nominal + "</td>" ;
+                             myRow += "<td class='money'>" + obj.s_percibido + "</td>" ;
+                             myRow += "<td class='money'>" + obj.goteo + "</td>" ;
+                             myRow += "<td class='money'>" + obj.donacion_1 + "</td>" ;
+                             myRow += "<td>" + obj.favor_1 + "</td>" ; 
+                             myRow += "<td class='money'>" + obj.donacion_2 + "</td>" ;
+                             myRow += "<td>" + obj.favor_2 + "</td>" ; 
+                                
+                             $(myTable).append( myRow);
+                             */
+
+                            var myRow = "<tr>";
+                              myRow += "<td>Goteo</td>" ; 
+                             myRow += "<td class='money'>" + obj.goteo + "</td>" ;
+                             myRow+="</tr>"
+
+                             /*myRow += "<tr><td class='money'>" + obj.donacion_1 + "</td>" ;
+                             myRow += "<td>" + obj.favor_1 + "</td></tr>" ; 
+                             myRow += "<tr><td class='money'>" + obj.donacion_2 + "</td>" ;
+                             myRow += "<td>" + obj.favor_2 + "</td></tr>" ; */
+                             for (var i=0 ; i<10; i++){
+                                if(obj["donacion_"+i] === undefined  || obj["favor_"+i]=== undefined) continue;
+                                else {
+                                    myRow += "<tr> <td>" + obj["favor_"+i] + "</td>" ; 
+                                    myRow += "<td class='money'>" + obj["donacion_"+i] + "</td> </tr>" ;
+                                }
+                             }
+                                
+                             $(myTable).append( myRow);
+
+                             totC['nominal'] += parseFloat(obj.s_nominal);
+                             totC['percibido'] += parseFloat(obj.s_percibido);
+                             totC['goteo'] += parseFloat(obj.goteo);
+                             totC['donacion'] += parseFloat(obj.donacion_1);
+                             totC['donacion'] += parseFloat(obj.donacion_2);
                             
                          }  
 
@@ -388,14 +426,14 @@
                 
                 // write total(s)
                 $("#totalG .bg_tot p.importe").text(totC['nominal']);
-                $("#partes .bg_t1 p.importe").text(totC['percibido']);
+                //$("#partes .bg_t1 p.importe").text(totC['percibido']);
                 // $("#partes .bg_t2 p.importe").text(totC['e']);
-                $("#partes .bg_t3 p.importe").text(totC['goteo']);
-                $("#partes .bg_t4 p.importe").text(totC['donacion']);
+                //$("#partes .bg_t3 p.importe").text(totC['goteo']);
+                //$("#partes .bg_t4 p.importe").text(totC['donacion']);
                 
-                // calculate width
+                // calculate width NO LO USO BORRAR
                 var t1W = totC['percibido'] * 100.00 / totC['nominal'];
-                var t2W = totC['e'] * 100.00 / totC['nominal'];
+                var t2W = totC['e'] * 100.00 / totC['nominal']; 
                 var t3W = totC['goteo'] * 100.00 / totC['nominal'];
                 var t4W = totC['donacion'] * 100.00 / totC['nominal'];
                 var t0W = totC['percibido'] * 100.00 / totC['nominal']; 
@@ -408,10 +446,10 @@
                 */
                 
                 // assign width
-                $('#partes .bg_t1').css({width: t1W.toFixed(4) + '%'});
-                $('#partes .bg_t2').css({width: t2W.toFixed(4) + '%'});
-                $('#partes .bg_t3').css({width: t3W.toFixed(4) + '%'});
-                $('#partes .bg_t4').css({width: t4W.toFixed(4) + '%'});
+                $('#partes .bg_t1').css({width: "60" + '%'});
+                $('#partes .bg_t2').css({width: "30"+ '%'}); //no se usa
+                $('#partes .bg_t3').css({width: "20" + '%'}); // goteo
+                $('#partes .bg_t4').css({width: "20" + '%'}); // goteo
                     
                 // cards concejales / table eventuales
                 // var myTable =  $("#salarios_eventuales > tbody");
@@ -477,10 +515,10 @@
      
 
      function initC() {
-     $("#salarios_meses").tablesorter({ 
+     /*$("#salarios_meses").tablesorter({ 
              // sort on the first column and third column, order asc 
               sortList: [[0,0]] 
-         }); 
+         }); */
          
      $('.money').formatCurrency({
         decimalSymbol: ',',
@@ -488,6 +526,7 @@
         symbol: '€',
         positiveFormat: '%n <span class="euro">%s</span>',
       });
+
       
       
       
