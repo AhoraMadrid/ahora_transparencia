@@ -82,21 +82,35 @@
       <h4>eventuales</h4>
       <p>Placerat facer possim assum typi non habent claritatem insitam est usus legentis in iis qui facit. Amet consectetuer adipiscing elit sed diam nonummy nibh euismod tincidunt ut. 
       </p>
+      <ul class="nav nav-tabs">
+          <li role="presentation" class="active">
+            <a href="#periodo-0"> 15 Junio 2015 - 30 Dic 2015</a>
+          </li>          
+        </ul>
+        <div id="my-tab-content" class="tab-content">
+            <div class="tab-pane active" id="periodo-0">
+              <table id="salarios_eventuales" class="table tablesorter"> 
+                  <thead> 
+                  <tr> 
+                      <th>nombre</th> 
+                      <th>apellidos</th>
+                      <th>categoría</th>
+                      <th>Organismo</th>
+                      <th>sueldo limitado neto</th> 
+                      <th>sueldo neto al mes</th> 
+                      <th>goteo</th>
+                      <th>donaciones</th>
+                   </tr> 
+                   
+                  </thead> 
+                  <tbody></tbody> 
+                  </table>
+            </div>
+        </div>
+
+
+
       
-      <table id="salarios_eventuales" class="table tablesorter"> 
-      <thead> 
-      <tr> 
-          <th>nombre</th> 
-          <th>apellidos</th>
-          <th>salario nominal</th> 
-          <th>salario percibido</th> 
-          <th>goteo</th>
-          <th>donaciones</th>
-       </tr> 
-       
-      </thead> 
-      <tbody></tbody> 
-      </table>
       
       
          </div>
@@ -148,9 +162,16 @@
      var totC = {nominal:0.0, percibido:0.0, goteo:0.0, donacion:0.0, c:0.0, e:0.0};
      moment.locale('es');  // translate dates to es format
      
-     var donutData = []; // donut graph data
     
+    var meses = []; // todos MM_AAAA
+    var mesesR = []; // rótulos MM, AAAA
+    var mesesL = []; // labels
     
+    var peopleID = []; // just ID // once
+    var peopleIDRow = []; // just ID
+    var peopleData = []; // data Objects // once
+    var peopleDataRow = {}; // data Objects
+
      
      $(document).ready(function() { 
           Papa.parse("datos_03/eventuales.tsv", {
@@ -158,24 +179,15 @@
         header: true,
         delimiter: "\t",    
         complete: function(results) {
-             //console.log(results.data);
+             //console.log(results.data);         
             
-            var meses = []; // todos MM_AAAA
-            var mesesR = []; // rótulos MM, AAAA
-            var mesesL = []; // labels
-            
-            var peopleID = []; // just ID // once
-            var peopleIDRow = []; // just ID
-            var peopleData = []; // data Objects // once
-            var peopleDataRow = []; // data Objects
-            resultados=peopleDataRow
-
+            resultados=results
             $.each( results.data, function( index, value ) {
 
                  var obj = value;
 
                  if(  ("Apellidos" in obj) == false  || ("Nombre" in obj)== false) return true;
-                                  console.log(obj)
+                console.log(obj)
                  var miMes = moment(obj.fecha, "DD/MM/YYYY").format("MMMM");
                  var miAnno = moment(obj.fecha, "DD/MM/YYYY").format("YYYY");
                  var mes_anno = miMes +"_" + miAnno;
@@ -186,7 +198,12 @@
                  peopleIDRow.push(obj.id); 
                  // people data
                  // create new object > add to array
-                 peopleDataRow[obj.id] = {nombre: obj.nombre, apellidos: obj.apellidos, status: obj.status, nominal: 0.0, percibido: 0.0, goteo: 0.0, donaciones: 0.0};
+                 peopleDataRow[obj.id] = {
+                  nombre: obj.Nombre, 
+                  apellidos: obj.Apellidos, 
+                  categoria: obj.Categoria,
+                  organismo : obj.Organismo,
+                  status: 'e', nominal: 0.0, percibido: 0.0, goteo: 0.0, donaciones: 0.0};
             }); 
             
             //console.log(peopleID);
@@ -204,12 +221,13 @@
                 var ID = peopleID[i];
                 var P = peopleDataRow[ID];
                 peopleData[ID] = P;
+                console.log(peopleData[ID])
             }
             
             //console.log(peopleData);
                         
-            var peopleIDRow = []; // clean up
-            var peopleDataRow = [];
+            //peopleIDRow = []; // clean up
+            //peopleDataRow = [];
                     
             // unique month
             var thisM = meses[0];
@@ -285,52 +303,25 @@
             $(myTable).append( myRow);
         }
         
-        // write total(s)
-        $("#totalG .bg_tot p.importe").text(totC['nominal']);
-        $("#partes .bg_t1 p.importe").text(totC['c']);
-        $("#partes .bg_t2 p.importe").text(totC['e']);
-        $("#partes .bg_t3 p.importe").text(totC['goteo']);
-        $("#partes .bg_t4 p.importe").text(totC['donacion']);
-        
-        // calculate width
-        var t1W = totC['c'] * 100.00 / totC['nominal'];
-        var t2W = totC['e'] * 100.00 / totC['nominal'];
-        var t3W = totC['goteo'] * 100.00 / totC['nominal'];
-        var t4W = totC['donacion'] * 100.00 / totC['nominal'];
-        var t0W = totC['percibido'] * 100.00 / totC['nominal'];
-        
-        // donut data
-        donutData.push(["Salarios percibidos", totC['percibido']]);
-        donutData.push(["donaciones a Goteo", totC['goteo']]);
-        donutData.push(["otras donaciones", totC['donacion']]);
-        
-        // update % texts
-        $('#d1').text(t0W.toFixed(1) + '%');
-        $('#d2').text(t3W.toFixed(1) + '%');
-        $('#d3').text(t4W.toFixed(1) + '%');
-        
-        // assign width
-        $('#partes .bg_t1').css({width: t1W.toFixed(4) + '%'});
-        $('#partes .bg_t2').css({width: t2W.toFixed(4) + '%'});
-        $('#partes .bg_t3').css({width: t3W.toFixed(4) + '%'});
-        $('#partes .bg_t4').css({width: t4W.toFixed(4) + '%'});
+    
         
         
-        // cards concejales / table eventuales
+        // 
         var myTable =  $("#salarios_eventuales > tbody");             
         for (i = 0; i < peopleID.length; i++) {         
             var miID = peopleID[i];
             var obj = peopleData[miID];
             // console.log(obj.nombre);
             
-            if(obj.status === "c"){
-                
-            
+            if(obj.status === "c"){                
+              continue;
               } else {
               // eventual
                   var myRow = "<tr>";
                   myRow += "<td>" + obj.nombre + "</td>" ; 
                   myRow += "<td>" + obj.apellidos + "</td>" ; 
+                  myRow += "<td>" + obj.categoria + "</td>" ; 
+                  myRow += "<td>" + obj.organismo + "</td>" ;
                   myRow += "<td class='money'>" + obj.nominal + "</td>" ;
                   myRow += "<td class='money'>" + obj.percibido + "</td>" ;
                   myRow += "<td class='money'>" + obj.goteo + "</td>" ;
@@ -341,7 +332,7 @@
             //console.log("fin append concejal" + obj.nombre);
         
         }
-        window.setTimeout(initC, 100); //ñaaaapa. Si no hay un poco de retraso a veces no ejecuta la funcion de cards
+        window.setTimeout(initC, 200); //ñaaaapa. Si no hay un poco de retraso a veces no ejecuta la funcion de cards
         } // end complete loading json
         
      }); // end pepa parse
@@ -390,50 +381,7 @@ console.log("fin document ready");
       }); 
       
       
-      //$(function () {
-          $('#donut').highcharts({
-              chart: {
-                  plotBackgroundColor: null,
-                  plotBorderWidth: 0,
-                  plotShadow: false
-              },
-              
-              title: {
-                  text: ' ',
-                  align: 'center',
-                  verticalAlign: 'middle'
-                  //y: 40
-              },
-              
-              tooltip: {
-                  pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-              },
-              
-              plotOptions: {
-                  pie: {
-                      dataLabels: {
-                          enabled: false,
-                          distance: -50,
-                          style: {
-                              fontWeight: 'bold',
-                              color: 'white',
-                              textShadow: '0px 1px 2px black'
-                          }
-                      },
-                     // startAngle: -90,
-                     // endAngle: 90,
-                      center: ['50%', '50%']
-                  }
-              },
-              
-              series: [{
-                  type: 'pie',
-                  name: 'distribución salario bruto',
-                  innerSize: '50%',
-                  data: donutData
-                  }]
-          });
-      //});      
+           
     }     
      
      

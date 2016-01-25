@@ -69,7 +69,8 @@
     <div class="col-md-12 noPadding">
     <hr/>
     <h2>ingresos por salarios</h2>
-    <p>Lectores legere me lius quod ii legunt saepius claritas est etiam processus dynamicus qui. Facer possim assum, typi non habent claritatem insitam est usus legentis in iis qui facit eorum. Demonstraverunt sequitur mutationem consuetudium lectorum mirum est notare quam.
+    <p>Un concejal tiene un "sueldo legal", pero los concejales de ahoraMadrid se comprometen a limitar su salario neto a aproximadamente 3 salarios mínimos (con algunas variaciones según la situación familiar o necesidades especiales) <br/>La diferencia entre el salario neto real y el salario neto limitado se destina a distintos tipos de donaciones. 
+        <br/>  
     </p>
     </div>
     </div>
@@ -80,20 +81,20 @@
      <div class="col-md-8 nopaddingR separaTop6">
      
       <div class="row">
-      <div class="col-md-2"><h3 id="d1" class="por100">60 %</h3></div>
-      <div class="col-md-10"><p class="separaTop">Lectorum mirum est notare quam littera gothica quam. Placerat facer possim assum typi non habent claritatem insitam est usus legentis in iis. 
+      <div class="col-md-2"><h3 id="d1" class="por100">30 %</h3></div>
+      <div class="col-md-10"><p class="separaTop">Reducción media de salario. Esta reducción se dedica a donaciones:
       </p></div>
       </div>
       
       <div class="row">
-      <div class="col-md-2"><h3 id="d2" class="por100">30 %</h3></div>
-      <div class="col-md-10"><p class="separaTop">Lectorum mirum est notare quam littera gothica quam. Placerat facer possim assum typi non habent claritatem insitam est usus legentis in iis. 
+      <div class="col-md-2"><h3 id="d2" class="por100">20 %</h3></div>
+      <div class="col-md-10"><p class="separaTop">Financiación de proyectos de innovación social abierta en http://goteo.org
       </p></div>
       </div>
       
       <div class="row">
-      <div class="col-md-2"><h3 id="d3" class="por100">10 %</h3></div>
-      <div class="col-md-10"><p class="separaTop">Lectorum mirum est notare quam littera gothica quam. Placerat facer possim assum typi non habent claritatem insitam est usus legentis in iis. 
+      <div class="col-md-2"><h3 id="d3" class="por100">80 %</h3></div>
+      <div class="col-md-10"><p class="separaTop"> Donación libre <small> (puedes ver los destinatarios en la página de cada concejal) </small>
       </p></div>
       </div>
       
@@ -123,14 +124,14 @@
     </div>
     </div>
     
-     <div class="row">
+     <!--<div class="row">
      
      <div class="col-md-12 noPadding" id="totalG">
      	<div class="bg_tot bloque">
      	<p class="concepto">ingresos por salarios</p>
     	<p class="importe money">total</p>
      	</div>
-     </div>
+     </div> 
      
      </div>
      
@@ -154,10 +155,10 @@
      <p class="concepto">donaciones</p>
      <p class="importe money">total</p>
      </div>
-     </div>
+     </div> 
      </div>
           
-     </div>
+     </div>-->
     
     
     <div class="row">
@@ -166,7 +167,7 @@
      <hr/>
      <h2>en detalle</h2>
      <h4>concejales</h4>
-     <p>Placerat facer possim assum typi non habent claritatem insitam est usus legentis in iis qui facit. Amet consectetuer adipiscing elit sed diam nonummy nibh euismod tincidunt ut. 
+     <p>En la página de cada concejal puedes conocer los detalles de sus ingresos y los destinatarios de las donaciones.
      </p>
      </div>
      
@@ -411,14 +412,14 @@ console.log("fin document ready");
         var t0W = totC['percibido'] * 100.00 / totC['nominal'];
         
         // donut data
-        donutData.push(["Salarios percibidos", totC['percibido']]);
-        donutData.push(["donaciones a Goteo", totC['goteo']]);
-        donutData.push(["otras donaciones", totC['donacion']]);
+        donutData.push(["Salarios neto limitado", 50]);
+        donutData.push(["impuestos sobre el salario bruto", 20]);
+        donutData.push(["Donaciones", 30 ]);
         
         // update % texts
-        $('#d1').text(t0W.toFixed(1) + '%');
-        $('#d2').text(t3W.toFixed(1) + '%');
-        $('#d3').text(t4W.toFixed(1) + '%');
+       // $('#d1').text(t0W.toFixed(1) + '%');
+        //$('#d2').text(t3W.toFixed(1) + '%');
+        //$('#d3').text(t4W.toFixed(1) + '%');
         
         // assign width
         $('#partes .bg_t1').css({width: t1W.toFixed(4) + '%'});
