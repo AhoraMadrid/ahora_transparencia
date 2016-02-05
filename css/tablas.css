@@ -151,6 +151,7 @@ table.tablesorter tbody td.money{
 #concejales .card{
 	padding-top: 0;
 	border-top: 1px solid #ccc;
+	padding-bottom: 1em;
 }
 
 #concejales .bloque{
@@ -596,11 +597,16 @@ caption{
 #facturas{
 	vertical-align: top;
 }
+
+/* cards */
+
 .card{
 	display: inline-block;
 	width: 24%;
 	
 	width: 19.25%;
+	width: 24%;
+	
 	
 	border: 1px solid #ccc;
 	
@@ -634,6 +640,10 @@ caption{
 	padding-top: 0.75em;
 	font-family: 'Ubuntu', sans-serif;
 	font-weight: 700;
+}
+
+.card p.parcial{
+	color: #333 !important;
 }
 
 .card p.benefit:after, .card p.dni:after{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale; color: #999; float: right;
@@ -683,9 +693,19 @@ padding-top: 0.5em;
 }
 
 #concejales .card p.parcial span.euro{
-	/*font-size: 0.8em;*/
+	/* font-size: 0.8em;*/
+	
+	/*
 	visibility: hidden;
 	display: none;
+	*/
+}
+
+#concejales .card p.parcial span.euro{
+font-size: 0.8em;
+display: inline;
+visibility: visible;
+color: #666;
 }
 
 #concejales .card p.importe span.euro{
@@ -707,8 +727,6 @@ font-size: 0.8em;
 label{
 	font-weight: 400;
 }
-
-
 
 /*input[type="radio"].filter_ui{*/
 input[type="radio"]{
@@ -804,8 +822,17 @@ h3.por100{
 	text-align: right;
 }
 
-
-
 p.nombre {
-  height: 40px;
+  /*height: 40px;*/
+  text-transform: capitalize;
+  padding-top: 1em;
 } 
+
+p.nombre span.apellido{
+	font-weight: 500;
+}
+
+p.parcial span.money{
+	float: right;
+	line-height: 1em;
+}

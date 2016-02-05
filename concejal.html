@@ -220,14 +220,18 @@
      <script>    
      var totC = {nominal:0.0, percibido:0.0, goteo:0.0, donacion:0.0}; 
      var c 
+     
      $(document).ready(function() { 
+     
+     
              c = Cookies.get('concejal')
-              thisID = "c02";             
+             thisID = "c02";             
              if(c === "undefined"){
                 // nothing
              } else {
                  thisID = c;
-             }              
+             }    
+                      
              
              moment.locale('es');  // translate dates to es format
              

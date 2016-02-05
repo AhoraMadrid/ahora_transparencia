@@ -22,14 +22,16 @@ function generateCards( peopleIDcsv, peopleDataCsv, concejalInfoStruct){
             // content: image
           //  console.log(obj)
             $(div).append( "<img src='img/people/"+peopleIDcsv[i]+".jpg' />" );
-            $(div).append( "<p class='nombre'>" + obj.nombre + " " +obj.apellidos +"</p>" );
+            $(div).append( "<p class='nombre'>" + obj.nombre.toLowerCase() + "<br/><span class='apellido'>" +obj.apellidos.toLowerCase() +"</span></p>" );
             $(div).append("<hr/>");
             
-            $(div).append( "<p class='parcial c1'>Bruto anual normativo:  <span class='money'>"  + obj.nominal  + "</span></p>" );
-            $(div).append( "<p class='parcial c3'>goteo:  <span class='money'>"  + obj.goteo + "</span> </p>" );
-            $(div).append( "<p class='parcial c4'>Donaciones:  <span class='money'>"  + obj.donaciones + "</span> </p>" );
+            $(div).append( "<p class='parcial c1'>Bruto anual<br/>normativo:  <span class='money'>"  + obj.nominal  + "</span></p>" );
             $(div).append("<hr/>");
-            $(div).append( "<p class='parcial c4'> Salario neto limitado 2015 <span class=' money'>" + concejalInfoStruct[miID][8]*6 +"</span> </p>" );
+            
+            $(div).append( "<p class='parcial c3'>goteo:  <span class='money'>"  + obj.goteo + "</span> </p>" );
+            $(div).append( "<p class='parcial c4'>donaciones:  <span class='money'>"  + obj.donaciones + "</span> </p>" );
+            $(div).append("<hr/>");
+            $(div).append( "<p class='parcial c4'> Salario neto<br/>limitado 2015 <span class=' money'>" + concejalInfoStruct[miID][8]*6 +"</span> </p>" );
                         
             // calculate and assign width
             var t1W = obj.percibido * 100.00 / obj.nominal;
