@@ -38,7 +38,7 @@
     <div class="col-md-7 nopaddingL">
   
   <ol class="breadcrumb">
-    <li><a href="index.html">ahora madrid</a></li>
+    <li><a href="#">ahora madrid</a></li>
     <li><a href="index.html">transparencia</a></li>
     <li><a href="salarios.html">concejales</a></li>
     <li class="active"><span id="me">Mi Nombre</span></li>
@@ -132,20 +132,27 @@
      </div>
      
      
-     <div class="row separa">
+     <div class="row separaMas">
      <div class="col-md-12 noPadding">
          <p>La diferencia entre el salario bruto oficial y el salario que se cobra realmente se destina por un lado a financiar proyectos a través de la plataforma de crowdfounding “Goteo” y por otro a financiar organizaciones sin ánimo de lucro que cada cual elije.</p>
      
      </div>
      </div>
      
-     <div class="row">
-        <h4> destinatarios de las donaciones </h4>
-        <ul class="nav nav-tabs">
+     <div class="row separa">
+     <div class="col-md-8 noPadding">
+        <ul class="nav nav-pills">
           <li role="presentation" class="active">
             <a href="#periodo-0"> 15 Junio 2015 - 30 Dic 2015</a>
           </li>          
         </ul>
+        </div>
+        
+        <div class="col-md-4 noPadding text-right">
+        <p class="grigio"><em>destinatarios de las donaciones</em></p>
+        </div>
+        
+        
         <div id="my-tab-content" class="tab-content">
             <div class="tab-pane active" id="periodo-0">
                <table id="donaciones_periodo" class="table tablesorter"> 
@@ -164,25 +171,19 @@
 
      </div>
     
+     <div class="row separaMas">
+     <div class="col-md-12 noPadding">
+     <hr/>
+     <h4 class="grigio">otros concejales</h4>
+     </div>
+     </div>
     
-    <div class="row">
-    <div class="col-md-12 noPadding">
-    <hr/>
-    <h4>otros concejales</h4>
-    </div>
+    <div class="row separaMas">
     
+       
      <div class="col-md-12 noPadding" id="concejales"></div>
     </div>
-    
-    <footer>
-    <div class="row">
-    <div class="col-md-12 noPadding">
-    footer
-    </div>
-    </div>
-    
-    </footer>
-    
+        
     
     </div> <!-- end container -->
     
@@ -393,10 +394,10 @@ function parseCsv(){
     */
     
     // assign width
-    $('#partes .bg_t1').css({width: "50" + '%'});
+    $('#partes .bg_t1').css({width: "60" + '%'});
     // $('#partes .bg_t2').css({width: "30"+ '%'}); //no se usa
     $('#partes .bg_t3').css({width: "20" + '%'}); // goteo
-    $('#partes .bg_t4').css({width: "30" + '%'}); // goteo
+    $('#partes .bg_t4').css({width: "20" + '%'}); // goteo
     
     // REAL width
     

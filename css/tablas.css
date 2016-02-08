@@ -106,13 +106,14 @@ table.tablesorter tbody td.money{
 
 
 .bg_tot{
-	background-color: #0000ee;
+	background-color: #04773a;
+	background-color: #e95026;
 	width: 100%;
 	margin-top: 1.5em;
 }
 
 .bg_t1{
-	background-color: #00eeee;
+	background-color: #00a58d;
 }
 
 .c1{
@@ -120,7 +121,7 @@ table.tablesorter tbody td.money{
 }
 
 .bg_t2{
-	background-color: #ee00ee;
+	background-color: #00a58d;
 }
 
 .c2{
@@ -128,7 +129,7 @@ table.tablesorter tbody td.money{
 }
 
 .bg_t3{
-	background-color: #00ee00;
+	background-color: rgba(0, 0, 0, .6);
 }
 
 .c3{
@@ -136,7 +137,7 @@ table.tablesorter tbody td.money{
 }
 
 .bg_t4{
-	background-color: #ee0000;
+	background-color: rgba(0, 0, 0, .75);
 }
 
 .c4{
@@ -452,6 +453,10 @@ color: #f79804;
 .evidenciador.rojo{
 	background-color: #e95026;
 	color: #fff;
+}
+
+.verde{
+	color: #00a58d;
 }
 
 p a{
@@ -867,6 +872,11 @@ p.parcial span.money{
 	margin-bottom: 1.5em;
 }
 
+.separaMas{
+	margin-top: 3em;
+	margin-bottom: 3em;
+}
+
 .breadcrumb{
 	margin-bottom: 0;
 	background-color: #fff;
@@ -876,4 +886,21 @@ p.parcial span.money{
 
 .breadcrumb a{
 	color: #00a58d;
+}
+
+.nav {
+	margin-bottom: 8px;
+}
+
+.nav > li > a{
+	padding:  4px 8px;
+	font-size: 0.8em;
+}
+
+.nav > li > a:hover{
+	background-color:  #e95026 !important;
+}
+
+.nav-pills > li.active > a{
+	background-color: #00a58d;
 }

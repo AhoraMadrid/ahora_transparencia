@@ -37,8 +37,16 @@
     <div class="row" id="intro">
     
     <div class="col-md-7 nopaddingL">
-    <p>ahora madrid: transparencia</p>
+    
+    <ol class="breadcrumb">
+      <li><a href="#">ahora madrid</a></li>
+      <li><a href="index.html">transparencia</a></li>
+      <li class="active">concejales</li>
+    
+    </ol>
+    
         <hr/>
+        
     <p class="bigger">En nuestra voluntad de trasparencia os mostramos el Presupuesto de Ahora 
     Madrid y los ingresos que llevamos hasta el momento.
     </p>
@@ -50,7 +58,10 @@
         </div>
     
     <div class="col-md-5 text-right nopaddingR">
-    <p>&nbsp;</p>
+    <ol class="breadcrumb">
+     <li class="active">&nbsp;</li>
+    </ol>
+    
     <hr/>
     <select>
       <option value="volvo">Gastos Campaña Elecciones Municipales 2015</option>
@@ -82,11 +93,20 @@
      <div class="col-md-8 nopaddingR separaTop6">
      
       <div class="row">
-      <div class="col-md-2"><h3 id="d1" class="por100">30 %</h3></div>
-      <div class="col-md-10"><p class="separaTop">Reducción media de salario. Esta reducción se dedica a donaciones:
+      <div class="col-md-2"><h3 id="d1" class="por100 grigio">30 %</h3></div>
+      <div class="col-md-10"><p class="separaTop">Reducción media de salario.       </p></div>
+      </div>
+      
+      <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-10"><p class="separaTop">
+      <strong class="grigio">Esta reducción se dedica a donaciones:
+      </strong><br/>Financiación de proyectos de innovación social abierta en http://goteo.org<br/>
+      y Donación libre <small> (puedes ver los destinatarios en la página de cada concejal)</small>
       </p></div>
       </div>
       
+      <!--
       <div class="row">
       <div class="col-md-2"><h3 id="d2" class="por100">20 %</h3></div>
       <div class="col-md-10"><p class="separaTop">Financiación de proyectos de innovación social abierta en http://goteo.org
@@ -98,6 +118,8 @@
       <div class="col-md-10"><p class="separaTop"> Donación libre <small> (puedes ver los destinatarios en la página de cada concejal) </small>
       </p></div>
       </div>
+      -->
+      
       
      </div>
      </div>
@@ -105,7 +127,13 @@
     <div class="row">
     <div class="col-md-12 noPadding">
     <hr/>
-    <h4>enero 2015 / noviembre 2015</h4>
+   
+   <ul class="nav nav-pills">
+     <li role="presentation" class="active">
+       <a href="#periodo-0"> 15 Junio 2015 - 30 Dic 2015</a>
+     </li>          
+   </ul>
+   
     
     <table id="salarios_meses" class="table tablesorter"> 
     <thead> 
@@ -123,64 +151,33 @@
     </table> 
     
        <p class="grigio" style="margin-top: 1.5em;"><small>* La legislatura de 2015 comenzó el 15 Junio.</small></p>
+       
+       <p>En la página de cada concejal puedes conocer los detalles de sus ingresos y los destinatarios de las donaciones.
+       </p>
+       
     
     </div>
     </div>
     
-     <!--<div class="row">
      
-     <div class="col-md-12 noPadding" id="totalG">
-     	<div class="bg_tot bloque">
-     	<p class="concepto">ingresos por salarios</p>
-    	<p class="importe money">total</p>
-     	</div>
-     </div> 
-     
-     </div>
-     
-      <div class="row">
-     
-     <div class="col-md-12 noPadding">
-     <div id="partes">
-     <div class="bg_t1 bloque">
-     <p class="concepto">salarios concejales</p>
-     <p class="importe money">total</p>
-     </div>
-     <div class="bg_t2 bloque">
-     <p class="concepto">salarios eventuales</p>
-     <p class="importe money">total</p>
-     </div>
-     <div class="bg_t3 bloque">
-     <p class="concepto">goteo</p>
-     <p class="importe money">total</p>
-     </div>
-     <div class="bg_t4 bloque">
-     <p class="concepto">donaciones</p>
-     <p class="importe money">total</p>
-     </div>
-     </div> 
-     </div>
-          
-     </div>-->
     
     
-    <div class="row">
+    <div class="row separaMas">
     
+    <!--
      <div class="col-md-12 noPadding">
      <hr/>
      <h2>en detalle</h2>
-    <!-- <h4>concejales</h4>-->
+   
      <p style="margin-bottom: 3em;">En la página de cada concejal puedes conocer los detalles de sus ingresos y los destinatarios de las donaciones.
      </p>
    
      </div>
+     -->
      
-     <div class="col-md-12 noPadding" id="concejales">
+     <div class="col-md-12 noPadding" id="concejales"></div>
      
-     
-    
-     </div>
-     
+     <!--
      <div class="col-md-12 noPadding">
       <hr/>
      
@@ -193,18 +190,10 @@
       
       
     </div>
-     
+     -->
     </div>
     
-    <footer>
-    <div class="row">
-    <div class="col-md-12 noPadding">
-    footer
-    </div>
-    </div>
-    
-    </footer>
-    
+       
     
     </div> <!-- end container -->
     
@@ -401,9 +390,9 @@ console.log("fin document ready");
         var t0W = totC['percibido'] * 100.00 / totC['nominal'];
         
         // donut data
-        donutData.push(["Salarios neto limitado", 50]);
-        donutData.push(["impuestos sobre el salario bruto", 20]);
-        donutData.push(["Donaciones", 30 ]);
+        donutData.push(["Salarios neto limitado", 70]);
+        donutData.push(["Apoyo a proyectos vía Goteo", 15]);
+        donutData.push(["Donaciones", 15 ]);
         
         // update % texts
        // $('#d1').text(t0W.toFixed(1) + '%');
@@ -465,6 +454,12 @@ console.log("fin document ready");
       }); 
       
       //$(function () {
+      
+      Highcharts.setOptions({
+              colors: ['#00a58d', '#4d4d4d', '#999999', '#e95026', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+          });
+          
+          
           $('#donut').highcharts({
               chart: {
                   plotBackgroundColor: null,
@@ -480,7 +475,8 @@ console.log("fin document ready");
               },
               
               tooltip: {
-                  pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                  //pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                  pointFormat: '{series.name}'
               },
               
               plotOptions: {
