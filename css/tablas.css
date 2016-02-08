@@ -602,14 +602,12 @@ caption{
 
 .card{
 	display: inline-block;
-	width: 24%;
 	
 	width: 19.25%;
 	width: 24%;
 	
-	
 	border: 1px solid #ccc;
-	
+		
 	/*padding: 1.5em;*/
 	margin-bottom: 8px;
 	background-color: #f4f4f4;
@@ -623,6 +621,7 @@ caption{
 	-webkit-box-sizing: border-box;
 	    -moz-box-sizing: border-box;
 	    box-sizing: border-box;
+	    
 	vertical-align: top;
 }
 
@@ -671,7 +670,14 @@ padding-top: 0.5em;
 
 #concejales .card {
 	cursor: pointer;
+	border-top: 5px solid #999;
 }
+
+#concejales .card:hover {
+	cursor: pointer;
+	border-top: 5px solid #00ff8d;
+}
+
 
 #concejales .card hr{
 	border-color: #ccc;
@@ -828,8 +834,12 @@ p.nombre {
   padding-top: 1em;
 } 
 
+#concejales .card:hover p.nombre span.apellido{
+color: #00a58d;
+}
+
 p.nombre span.apellido{
-	font-weight: 500;
+	font-weight: 700;
 }
 
 p.parcial span.money{
