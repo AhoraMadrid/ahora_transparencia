@@ -204,6 +204,12 @@ color: rgba(255, 255, 255, .75);
 	
 }
 
+#rotulos h4{
+border-bottom: 1px solid #dedede;
+padding-bottom: 0.5em;
+color: #666;
+}
+
 .total{
 	text-align: right;
 }
@@ -904,3 +910,39 @@ p.parcial span.money{
 .nav-pills > li.active > a{
 	background-color: #00a58d;
 }
+
+#secciones .card a{
+	color: inherit;
+	display: block;
+
+	
+	
+}
+
+#secciones a h3{
+	color:  #00a58d;
+}
+
+#secciones h3{
+	color:  #999;
+	margin-left: 1em;
+	margin-right: 1.5em;
+}
+
+#secciones div{
+	
+}
+
+#secciones .card{
+	padding-bottom: 1.5em;
+
+	border: 1px solid #ccc;
+	
+}
+
+#secciones .card:hover{
+	
+	border: 1px solid #fff;
+	
+}
+
