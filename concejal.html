@@ -37,7 +37,17 @@
     
     <div class="col-md-7 nopaddingL">
   
+  <ol class="breadcrumb">
+    <li><a href="index.html">ahora madrid</a></li>
+    <li><a href="index.html">transparencia</a></li>
+    <li><a href="salarios.html">concejales</a></li>
+    <li class="active"><span id="me">Mi Nombre</span></li>
+  </ol>
+  
+  <!--
     <p> ahora madrid >>  <a href="index.html"> transparencia </a>>> <a href="salarios.html"> salarios </a> >> concejales</p>
+    -->
+    
         <hr/>
     <p class="bigger">En nuestra voluntad de trasparencia os mostramos el Presupuesto de Ahora 
     Madrid y los ingresos que llevamos hasta el momento.
@@ -50,7 +60,9 @@
         </div>
     
     <div class="col-md-5 text-right nopaddingR">
-    <p>&nbsp;</p>
+   <ol class="breadcrumb">
+    <li class="active">&nbsp;</li>
+   </ol>
     <hr/>
     <select>
       <option value="volvo">Gastos Campaña Elecciones Municipales 2015</option>
@@ -84,30 +96,7 @@
     
      
     
-    <div class="row">
-    <div class="col-md-12 noPadding">
-        Los salarios de los concejales de Ahora Madrid están limitados. La diferencia entre el salario "oficial" establecido por el pleno y el salario que cobran se destina por un lado a financiar proyectos de innovación social en la plataforma de Goteo de crowdfounding y otro porcentaje para financiar partidos y asociaciones que cada concejal elige.
     
-    <!--<table id="salarios_meses" class="table tablesorter"> 
-    <thead> 
-    
-    <tr> 
-        <th>mes</th> 
-        <th>salario nominal</th> 
-        <th>salario percibido</th> 
-        <th>goteo</th>
-        <th>donación</th>
-        <th>a favor de</th>
-        <th>donación</th>
-        <th>a favor de</th>
-     </tr> 
-     
-    </thead> 
-    <tbody></tbody> 
-    </table>  -->
-    
-    </div>
-    </div>
     
      <div class="row">
      
@@ -125,24 +114,33 @@
          <div class="col-md-12 noPadding">
              <div id="partes">
                  <div class="bg_t1 bloque">
-                     <p class="concepto">Salario limitado neto anual</p>
+                     <p class="concepto">Salario neto limitado mensual</p>
                      <p class="importe money"> <span> </span></p>
                  </div>
                 
                  <div class="bg_t3 bloque">
-                     <p class="concepto">Goteo</p>
-                     <p class="importe ">20% del resto <span> </span></p>
+                     <p class="concepto">Proyectos vía Goteo</p>
+                     <p class="importe "><span> </span></p>
                  </div>
                  <div class="bg_t4 bloque">
                      <p class="concepto">Donaciones</p>
-                     <p class="importe ">80% del resto <span> </span></p>
+                     <p class="importe "><span> </span></p>
                  </div>
              </div>
          </div>
           
      </div>
+     
+     
+     <div class="row separa">
+     <div class="col-md-12 noPadding">
+         <p>La diferencia entre el salario bruto oficial y el salario que se cobra realmente se destina por un lado a financiar proyectos a través de la plataforma de crowdfounding “Goteo” y por otro a financiar organizaciones sin ánimo de lucro que cada cual elije.</p>
+     
+     </div>
+     </div>
+     
      <div class="row">
-        <h3> Destinatarios de las donaciones </h3>
+        <h4> destinatarios de las donaciones </h4>
         <ul class="nav nav-tabs">
           <li role="presentation" class="active">
             <a href="#periodo-0"> 15 Junio 2015 - 30 Dic 2015</a>
@@ -155,7 +153,7 @@
                     
                         <tr> 
                             <th>Destinatario</th> 
-                            <th>Cantidad</th> 
+                            <th></th> 
                          </tr> 
                      
                     </thead> 
@@ -219,8 +217,8 @@
      
      <script>    
      var totC = {nominal:0.0, percibido:0.0, goteo:0.0, donacion:0.0}; 
-     var c 
-     
+     var c ;
+         
      $(document).ready(function() { 
      
      
@@ -252,7 +250,7 @@
                 $("#miCargo").text(data.concejales[thisID][1])
                 $("#miDescripcion").text(data.concejales[thisID][2])
                 $(".bg_t1 .importe span").text(data.concejales[thisID][6]) //neto anual
-
+				
                   /*var items = [];
                   $.each( data.concejales, function( key, val ) {
                     console.log(val)
@@ -271,13 +269,7 @@ function parseCsv(){
     delimiter: "\t",    
     complete: function(results) {
          //console.log(results.data);
-        
-        /*
-        var meses = []; // todos MM_AAAA
-        var mesesR = []; // rótulos MM, AAAA
-        var mesesL = []; // labels
-        */
-        
+            
         var peopleID = []; // just ID // once
         var peopleIDRow = []; // just ID
         var peopleData = []; // data Objects // once
@@ -296,22 +288,9 @@ function parseCsv(){
                  var mesYanno = miMes +", " + miAnno;
                  
                  //Aqui es donde se mete la donacion TBD TODO
-                 /*
-                 var myRow = "<tr>";
-                 myRow += "<td>" + mesYanno + "</td>" ; // mes, año
-                 myRow += "<td class='money'>" + obj.s_nominal + "</td>" ;
-                 myRow += "<td class='money'>" + obj.s_percibido + "</td>" ;
-                 myRow += "<td class='money'>" + obj.goteo + "</td>" ;
-                 myRow += "<td class='money'>" + obj.donacion_1 + "</td>" ;
-                 myRow += "<td>" + obj.favor_1 + "</td>" ; 
-                 myRow += "<td class='money'>" + obj.donacion_2 + "</td>" ;
-                 myRow += "<td>" + obj.favor_2 + "</td>" ; 
-                    
-                 $(myTable).append( myRow);
-                 */
-
+                 
                 var myRow = "<tr>";
-                  myRow += "<td>Goteo</td>" ; 
+                 myRow += "<td>Proyectos vía Goteo</td>" ; 
                  myRow += "<td class='money'>" + obj.goteo + "</td>" ;
                  myRow+="</tr>"
 
@@ -322,8 +301,16 @@ function parseCsv(){
                  for (var i=0 ; i<10; i++){
                     if(obj["donacion_"+i] === undefined  || obj["favor_"+i]=== undefined) continue;
                     else {
-                        myRow += "<tr> <td>" + obj["favor_"+i] + "</td>" ; 
-                        myRow += "<td class='money'>" + obj["donacion_"+i] + "</td> </tr>" ;
+                    
+                    	if(obj["donacion_"+i] > 0){
+                    		myRow += "<tr> <td>" + obj["favor_"+i] + "</td>" ; 
+                    		myRow += "<td class='money'>" + obj["donacion_"+i] + "</td> </tr>" ;
+                    		
+                    		// 
+                    		totC['donacion'] += parseFloat(obj["donacion_"+i]);
+                    	}
+                    	
+                       
                     }
                  }
                     
@@ -332,14 +319,16 @@ function parseCsv(){
                  totC['nominal'] += parseFloat(obj.s_nominal);
                  totC['percibido'] += parseFloat(obj.s_percibido);
                  totC['goteo'] += parseFloat(obj.goteo);
-                 totC['donacion'] += parseFloat(obj.donacion_1);
-                 totC['donacion'] += parseFloat(obj.donacion_2);
+                // totC['donacion'] += parseFloat(obj.donacion_1);
+                // totC['donacion'] += parseFloat(obj.donacion_2);
                 
              }                           
 
              peopleIDRow.push(obj.id); 
              peopleDataRow[obj.id] = {nombre: obj.nombre, apellidos: obj.apellidos, status: obj.status, nominal: 0.0, percibido: 0.0, goteo: 0.0, donaciones: 0.0};
         }); 
+        
+        
         
         $.each(peopleIDRow, function(i, el){
             if($.inArray(el, peopleID) === -1){
@@ -360,17 +349,14 @@ function parseCsv(){
         
     $.each( results.data, function( index, value ) {
          var obj = value;
-          
-         
-         
+
          // tot by people // all people
          peopleData[obj.id].nominal += parseFloat(obj.s_nominal);
          peopleData[obj.id].percibido += parseFloat(obj.s_percibido);
          peopleData[obj.id].goteo += parseFloat(obj.goteo);
          peopleData[obj.id].donaciones += parseFloat(obj.donacion_1);
          peopleData[obj.id].donaciones += parseFloat(obj.donacion_2);
-         
-         
+             
     }); 
     
 
@@ -380,8 +366,8 @@ function parseCsv(){
     $("#totalG .bg_tot p.importe").text(totC['nominal']);
     //$("#partes .bg_t1 p.importe").text(totC['percibido']);
     // $("#partes .bg_t2 p.importe").text(totC['e']);
-    //$("#partes .bg_t3 p.importe").text(totC['goteo']);
-    //$("#partes .bg_t4 p.importe").text(totC['donacion']);
+    $("#partes .bg_t3 p.importe").text(totC['goteo']);
+    $("#partes .bg_t4 p.importe").text(totC['donacion']);
     
     // calculate width NO LO USO BORRAR
     var t1W = totC['percibido'] * 100.00 / totC['nominal'];
@@ -397,18 +383,34 @@ function parseCsv(){
     $('#d3').text(t4W.toFixed(1) + '%');
     */
     
+    // nuevas cuentas
+    // 100% = goteo + donaciones + Salario neto limitado mensual * mese ?
+    /*
+    var totEuro = totC['goteo'] + totC['donacion'] + totC['percibido'];
+    var newW1 = totC['percibido'] * 100.00 / totEuro;
+    var newW2 = totC['donacion'] * 100.00 / totEuro;
+    var newW3 = totC['goteo'] * 100.00 / totEuro;
+    */
+    
     // assign width
-    $('#partes .bg_t1').css({width: "60" + '%'});
-    $('#partes .bg_t2').css({width: "30"+ '%'}); //no se usa
-    $('#partes .bg_t3').css({width: "10" + '%'}); // goteo
+    $('#partes .bg_t1').css({width: "50" + '%'});
+    // $('#partes .bg_t2').css({width: "30"+ '%'}); //no se usa
+    $('#partes .bg_t3').css({width: "20" + '%'}); // goteo
     $('#partes .bg_t4').css({width: "30" + '%'}); // goteo
+    
+    // REAL width
+    
         
     // cards concejales / table eventuales
     // var myTable =  $("#salarios_eventuales > tbody");
     
     var  miObj = peopleData[thisID];
-    $("#miNombre").text(miObj.nombre);
-    $("#miApellido").text(miObj.apellidos);
+    $("#miNombre").text(miObj.nombre.toLowerCase());
+    $("#miApellido").text(miObj.apellidos.toLowerCase());
+    
+    // breadcrumbs
+    $("#me").text(miObj.nombre.toLowerCase() + " " + miObj.apellidos.toLowerCase());
+    
     $("#miFoto").attr("src","img/people/"+thisID+".jpg");
     console.log(thisID)
      generateCards(peopleID, peopleData, infoConcejales);       
@@ -430,9 +432,17 @@ function parseCsv(){
         symbol: '€',
         positiveFormat: '%n <span class="euro">%s</span>',
       });
+      
+      
+      $('p.importe').formatCurrency({
+         decimalSymbol: ',',
+         digitGroupSymbol: '.',
+         symbol: '€',
+         positiveFormat: '%n <span class="euro">%s</span>',
+       });
 
       
-      
+      // p.importe
       
       // isotope
       var $grid = $('#concejales').isotope({

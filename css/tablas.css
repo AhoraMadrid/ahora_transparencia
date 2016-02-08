@@ -846,3 +846,34 @@ p.parcial span.money{
 	float: right;
 	line-height: 1em;
 }
+
+#miNombre, #miApellido{
+	text-transform: capitalize;
+	color: #00a58d;
+	font-weight: 500;
+}
+
+#me{
+	text-transform: capitalize;
+}
+
+#miCargo{
+	color: #666;
+	font-weight: 300;
+}
+
+.separa{
+	margin-top: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+.breadcrumb{
+	margin-bottom: 0;
+	background-color: #fff;
+	border-radius: 0;
+	padding-left: 0;
+}
+
+.breadcrumb a{
+	color: #00a58d;
+}
