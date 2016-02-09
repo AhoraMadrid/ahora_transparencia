@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>campaña elecciones municipales 2015</title>
+    <title>Campaña elecciones municipales 2015</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -63,12 +63,7 @@
      
      <hr/>
      
-     <select>
-       <option value="municipales_2015.html" selected>Campaña Elecciones Municipales 2015</option>
-       <option value="salarios.html">Salario de Concejales</option>
-       <option value="#">Salarios Personal eventual</option>
-       <!--<option value="audi">Ingresos Ejercicio 2015</option>-->
-     </select>
+    <select id="jump_menu"></select>
      
      <hr/>
      
@@ -441,14 +436,16 @@
  <script src="js/jquery.csvToTable.js"></script>
  <script src="js/jquery.formatCurrency-1.4.0.pack.js"></script>
   <script src="http://code.highcharts.com/highcharts.js"></script>
- <script type="text/javascript" src="http://code.highcharts.com/modules/data.js">
- </script>
+ <script type="text/javascript" src="http://code.highcharts.com/modules/data.js"></script>
  
+ <script src="js/jump_menu_transparencia.js"></script>
  
  
  <script>
 
-
+// jump menu
+var myPage = "municipales_2015.html";
+$("#jump_menu").find("option[value='" + myPage +"']").attr('selected', true);
 
      var sumG = 0;
      $("p.gasto").each(function() {   

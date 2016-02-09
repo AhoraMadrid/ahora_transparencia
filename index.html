@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Justified Nav Template for Bootstrap</title>
+    <title>Ahora Madrid: Transparencia</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -63,19 +63,15 @@
      
      <hr/>
      
-     <select>
-     <option value="#" selected="">Seleccione una opción</option>
-       <option value="municipales_2015.html">Campaña Elecciones Municipales 2015</option>
-       <option value="salarios.html">Salario de Concejales</option>
-       <option value="#">Salarios Personal eventual</option>
-           </select>
+     <select id="jump_menu"></select>
      
-     <!--
+    
      <hr/>
      
-     <p><em>última actualización: 20 de mayo, 2015</em></p>
-     <p><a href="datos_03/gastos.csv"><i class="fa fa-download" style="padding-right: 1em;"></i> <small>descargar .csv</small></a></p>
-     -->
+     <p><em>última actualización: 9 de febrero, 2016</em></p>
+     
+    <!-- <p><a href="datos_03/gastos.csv"><i class="fa fa-download" style="padding-right: 1em;"></i> <small>descargar .csv</small></a></p>-->
+ 
      
      </div>
      
@@ -87,7 +83,7 @@
         <div class="card">
         <a href="municipales_2015.html">
         <h3>Presupuesto Campaña Municipales 2015</h3>
-        <p>Lore Ipsum</p>
+        <p>Resumen de gastos e ingresos</p>
         </a>
         </div>
         
@@ -118,17 +114,16 @@
  <script src="js/jquery.min.js"></script>
  <!-- Include all compiled plugins (below), or include individual files as needed -->
  <script src="js/bootstrap.min.js"></script>
- <script type="text/javascript" src="js/jquery.tablesorter.min.js"></script> 
- <script src="js/jquery.csvToTable.js"></script>
+
  <script src="js/jquery.formatCurrency-1.4.0.pack.js"></script>
-  <script src="http://code.highcharts.com/highcharts.js"></script>
- <script type="text/javascript" src="http://code.highcharts.com/modules/data.js">
- </script>
- 
- 
+ <script src="js/jump_menu_transparencia.js"></script>
  
  <script>
-
+ 
+ // jump menu
+ var myPage = "index.html";
+ $("#jump_menu").find("option[value='" + myPage +"']").attr('selected', true);
+ 
 
  /* currency format */
  
@@ -151,14 +146,11 @@
  
  
  /* chart */
- 
- 
-      
-     
-  
+
   
  $(document).ready(function() { 
-      }); 
+ 	
+  }); 
  </script>
  
   </body>

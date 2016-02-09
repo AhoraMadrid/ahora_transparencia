@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>concejal</title>
+    <title>Concejal</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -33,55 +33,6 @@
 <body>
 
     <div class="container">
-    
-    
-    <!--
-    <div class="row" id="intro">
-    
-    <div class="col-md-7 nopaddingL">
-  
-  <ol class="breadcrumb">
-    <li><a href="#">ahora madrid</a></li>
-    <li><a href="index.html">transparencia</a></li>
-    <li><a href="salarios.html">concejales</a></li>
-    <li class="active"><span id="me">Mi Nombre</span></li>
-  </ol>
-  
-     
-        <hr/>
-        
-        
-    <p class="bigger">En nuestra voluntad de trasparencia os mostramos el Presupuesto de Ahora 
-    Madrid y los ingresos que llevamos hasta el momento.
-    </p>
-    
-    <p>Nuestra intención es publicar al detalle de cada gasto pasada la campaña y una vez contrastadas las facturas que estamos recibiendo. Igual con los 
-    ingresos, ya que debemos verificar los datos de las donaciones y 
-    micro-créditos.</p>
-    
-        </div>
-    
-    
-    <div class="col-md-5 text-right nopaddingR">
-   <ol class="breadcrumb">
-    <li class="active">&nbsp;</li>
-   </ol>
-    <hr/>
-    <select>
-      <option value="volvo">Gastos Campaña Elecciones Municipales 2015</option>
-      <option value="saab">Ingresos Campaña Elecciones Municipales 2015</option>
-      <option value="mercedes">Gastos Ejercicio 2015</option>
-      <option value="audi">Ingresos Ejercicio 2015</option>
-    </select>
-    
-    <hr/>
-    
-    <p><em>última actualización: 20 de mayo, 2015</em></p>
-    <p><a href="datos_03/gastos.csv"><i class="fa fa-download" style="padding-right: 1em;"></i> <small>descargar .csv</small></a></p>
-    </div>
-    </div>
-    -->
-    
     
     
     <div class="row" id="intro">
@@ -116,11 +67,7 @@
      </div>
     </div>
     
-    
-     
-    
-    
-    
+ 
      <div class="row">
      
      <div class="col-md-12 noPadding" id="totalG">
@@ -326,12 +273,12 @@ function parseCsv(){
                     if(obj["donacion_"+i] === undefined  || obj["favor_"+i]=== undefined) continue;
                     else {
                     
-                    	if(obj["donacion_"+i] > 0){
+                    	if( parseFloat(obj["donacion_"+i]) > 0){
                     		myRow += "<tr> <td>" + obj["favor_"+i] + "</td>" ; 
                     		myRow += "<td class='money'>" + obj["donacion_"+i] + "</td> </tr>" ;
                     		
                     		// 
-                    		totC['donacion'] += parseFloat(obj["donacion_"+i]);
+                    		//totC['donacion'] += parseFloat(obj["donacion_"+i]);
                     	}
                     	
                        
