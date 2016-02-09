@@ -952,3 +952,18 @@ p.parcial span.money{
 	border: 1px solid #fff;	
 }
 
+
+#cabecera h2{
+	font-weight: 500;
+	margin: 0;
+	padding: 0;
+}
+
+#intro hr{
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+#rotulos{
+	margin-top: 1.5em;
+}
