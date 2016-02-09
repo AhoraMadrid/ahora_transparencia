@@ -68,7 +68,7 @@
     
      <hr/>
      
-     <p><em>última actualización: 9 de febrero, 2016</em></p>
+     <p class="grigio"><em>última actualización: 9 de febrero, 2016</em></p>
      
     <!-- <p><a href="datos_03/gastos.csv"><i class="fa fa-download" style="padding-right: 1em;"></i> <small>descargar .csv</small></a></p>-->
  
@@ -78,26 +78,34 @@
      </div>
      
      
+     <div class="row ">
+     <div class="col-md-12 noPadding"><hr/></div>
+     </div>
+     
         <div class="row" id="secciones">
         
         <div class="card">
         <a href="municipales_2015.html">
         <h3>Presupuesto Campaña Municipales 2015</h3>
-        <p>Resumen de gastos e ingresos</p>
+        <hr/>
+        <p>Resumen de Gastos e ingresos de la Campaña Electoral</p>
         </a>
         </div>
         
         <div class="card">
         <a href="salarios.html">
         <h3>Salarios Concejales</h3>
-        <p>Lore Ipsum</p>
+        <hr/>
+        <p>Cuanto cobran los concejales de AM y a que destinan la reducción de su salario</p>
         </a>
         </div>
         
         <div class="card" >
        
         <h3>Salarios Personal Eventual</h3>
-        <p>Lore Ipsum</p>
+        <hr/>
+        <p>Quienes son y cuanto cobran el personal eventual del Grupo Municipal de AM ... y a que destinan la reducción de su salario</p>
+        
 
         </div>
         
@@ -123,6 +131,24 @@
  // jump menu
  var myPage = "index.html";
  $("#jump_menu").find("option[value='" + myPage +"']").attr('selected', true);
+ 
+ 
+ // fix cards height
+ var maxHeight = 0;
+ var maxHeight2 = 0;
+ 
+ 
+ $(".card h3").each(function(){
+    if ($(this).height() > maxHeight) { maxHeight = $(this).height();}
+ });
+ 
+ $(".card p").each(function(){
+    if ($(this).height() > maxHeight2) { maxHeight2 = $(this).height();}
+ });
+ 
+ 
+ $(".card h3").height(maxHeight);
+ $(".card p").height(maxHeight2);
  
 
  /* currency format */
