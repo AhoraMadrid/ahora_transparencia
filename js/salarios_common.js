@@ -31,9 +31,24 @@ function generateCards( peopleIDcsv, peopleDataCsv, concejalInfoStruct){
             $(div).append( "<p class='parcial c3'>Proyectos vía Goteo:  <span class='money'>"  + obj.goteo + "</span> </p>" );
             $(div).append( "<p class='parcial c4'>Donaciones:  <span class='money'>"  + obj.donaciones + "</span> </p>" );
             $(div).append("<hr/>");
+            
+            // excepción Barbero
+            if(concejalInfoStruct[miID][8] === undefined){
+            
+            $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido 2015 <span class=' money'>" + "n/a" +"</span> </p>");
+             $(div).append("<hr/>");
+            $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido mensual <span class=' money'>" + "n/a" +"</span> </p>");
+            
+            } else {
+            
             $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido 2015 <span class=' money'>" + concejalInfoStruct[miID][8]*6 +"</span> </p>");
              $(div).append("<hr/>");
             $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido mensual <span class=' money'>" + concejalInfoStruct[miID][8] +"</span> </p>");
+            
+            }
+            
+            
+           
                         
             // calculate and assign width
             var t1W = obj.percibido * 100.00 / obj.nominal;
