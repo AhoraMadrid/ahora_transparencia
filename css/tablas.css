@@ -835,6 +835,24 @@ td.c8{
 
 
 /* tr */
+
+.hiddenRow {
+    padding: 0 !important;
+}
+.accordion-toggle{
+	cursor: pointer;
+}
+div.accordian-body {
+	background-color: #ccc;
+	width: 100%;
+	padding-left: 5%
+}
+
+div.accordian-body span.money{
+	font-weight: bold;display: inline-block;
+	margin-right: 1em;
+}
+
 h3.por100{
 	text-align: right;
 }

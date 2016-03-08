@@ -174,7 +174,7 @@
 
      
      $(document).ready(function() { 
-          Papa.parse("datos_03/eventuales.tsv", {
+        Papa.parse("datos_03/eventuales.tsv", {
         download: true,
         header: true,
         delimiter: "\t",    
@@ -187,7 +187,7 @@
                  var obj = value;
 
                  if(  ("Apellidos" in obj) == false  || ("Nombre" in obj)== false) return true;
-                console.log(obj)
+                //console.log(obj)
                  var miMes = moment(obj.fecha, "DD/MM/YYYY").format("MMMM");
                  var miAnno = moment(obj.fecha, "DD/MM/YYYY").format("YYYY");
                  var mes_anno = miMes +"_" + miAnno;
@@ -221,7 +221,7 @@
                 var ID = peopleID[i];
                 var P = peopleDataRow[ID];
                 peopleData[ID] = P;
-                console.log(peopleData[ID])
+                //console.log(peopleData[ID])
             }
             
             //console.log(peopleData);
@@ -264,17 +264,38 @@
              var miMM_AAAA = miMMMM + "_" + miAAAA;
              
              // tot by people
-             peopleData[obj.id].nominal += parseFloat(obj.s_nominal);
-             peopleData[obj.id].percibido += parseFloat(obj.s_percibido);
-             peopleData[obj.id].goteo += parseFloat(obj.goteo);
-             peopleData[obj.id].donaciones += parseFloat(obj.donacion_1);
-             peopleData[obj.id].donaciones += parseFloat(obj.donacion_2);
+             //console.log('suela', obj);
+
+             peopleData[obj.id].nominal += Number(obj.s_nominal);
+             peopleData[obj.id].percibido += Number(obj.s_percibido);
+             peopleData[obj.id].goteo += Number(obj.goteo);
+             peopleData[obj.id].donaciones += Number(obj.donacion_1);
+             peopleData[obj.id].donaciones += Number(obj.donacion_2);
+             peopleData[obj.id].donaciones += Number(obj.donacion_3);
+             peopleData[obj.id].donaciones += Number(obj.donacion_4);
+             peopleData[obj.id].donaciones += Number(obj.donacion_5);
+             peopleData[obj.id].donacionesLista=[]
+             //genero la estructura de donaciones
+             for (var j=0 ; j<10; j++){
+                if(obj["donacion_"+j] === undefined  || obj["favor_"+j]=== undefined) continue;
+                else {                  
+                  if( parseFloat(obj["donacion_"+j]) > 0){                    
+                    peopleData[obj.id].donacionesLista.push( 
+                        { donacion: obj["donacion_"+j], 
+                          favor:obj["favor_"+j] } 
+                      ) 
+                  }
+                }
+              }
               
-             mesesTot[miMM_AAAA].nominal += parseFloat(obj.s_nominal);
-             mesesTot[miMM_AAAA].percibido += parseFloat(obj.s_percibido);
-             mesesTot[miMM_AAAA].goteo += parseFloat(obj.goteo);
-             mesesTot[miMM_AAAA].donaciones += parseFloat(obj.donacion_1);
-             mesesTot[miMM_AAAA].donaciones += parseFloat(obj.donacion_2);
+             mesesTot[miMM_AAAA].nominal    += Number(obj.s_nominal);
+             mesesTot[miMM_AAAA].percibido  += Number(obj.s_percibido);
+             mesesTot[miMM_AAAA].goteo      += Number(obj.goteo);
+             mesesTot[miMM_AAAA].donaciones += Number(obj.donacion_1);
+             mesesTot[miMM_AAAA].donaciones += Number(obj.donacion_2);
+             mesesTot[miMM_AAAA].donaciones += Number(obj.donacion_3);
+             mesesTot[miMM_AAAA].donaciones += Number(obj.donacion_4);
+             mesesTot[miMM_AAAA].donaciones += Number(obj.donacion_5);
               
              // totals
             // console.log(obj)
@@ -291,41 +312,46 @@
         // table > monts
         var myTable =  $("#salarios_meses > tbody");
         for (i = 0; i < mesesL.length; i++) { 
-            var thisM = mesesL[i];
-            
+            var thisM = mesesL[i];            
             var myRow = "<tr>";
             myRow += "<td>" + mesesRot[i] + "</td>" ; // mes, año
             myRow += "<td class='money'>" + mesesTot[thisM].nominal + "</td>" ;
             myRow += "<td class='money'>" + mesesTot[thisM].percibido + "</td>" ;
             myRow += "<td class='money'>" + mesesTot[thisM].goteo + "</td>" ;
-            myRow += "<td class='money'>" + mesesTot[thisM].donaciones + "</td>" ;
-                        
+            myRow += "<td class='money'>" + mesesTot[thisM].donaciones + "</td>" ;                        
             $(myTable).append( myRow);
-        }
-        
-    
-        
+        }        
         
         // 
         var myTable =  $("#salarios_eventuales > tbody");             
         for (i = 0; i < peopleID.length; i++) {         
             var miID = peopleID[i];
-            var obj = peopleData[miID];
-            // console.log(obj.nombre);
+            obj = peopleData[miID];
+             console.log(obj);
             
             if(obj.status === "c"){                
               continue;
-              } else {
-              // eventual
-                  var myRow = "<tr>";
-                  myRow += "<td>" + obj.nombre + "</td>" ; 
+              } 
+            else {
+              // eventual 
+              //info de los tipos de donantes
+                  var myRow = '<tr data-toggle="collapse" data-target="#infoextra'+i+'" class="accordion-toggle">';
+                  myRow += "<td><i class='fa fa-caret-down'> </i> " + obj.nombre + "</td>" ; 
                   myRow += "<td>" + obj.apellidos + "</td>" ; 
                   myRow += "<td>" + obj.categoria + "</td>" ; 
                   myRow += "<td>" + obj.organismo + "</td>" ;
                   myRow += "<td class='money'>" + obj.nominal + "</td>" ;
                   myRow += "<td class='money'>" + obj.percibido + "</td>" ;
                   myRow += "<td class='money'>" + obj.goteo + "</td>" ;
-                  myRow += "<td class='money'>" + obj.donaciones + "</td>" ;                                    
+                  myRow += "<td class='money'>" + obj.donaciones + "</td> </tr>" ;   
+                  myRow+= ' <tr> <td colspan="8" class="hiddenRow"> <div class="accordian-body collapse" id="infoextra'+i+ '">'; 
+                  for (var j=0 ; j<obj.donacionesLista.length; j++){ 
+                        var parDonacion=obj.donacionesLista[j];                   
+                        myRow +='<i class="fa fa-caret-right"></i> <span> '+ parDonacion.favor + ": </span>" ; 
+                        myRow += "<span class='money'>" + parDonacion.donacion + "</span> " ;  
+                  }
+                 
+                 myRow+="</div> </td> </tr>"
                   $(myTable).append( myRow);
                 //  console.log("append eventual");                        
               }
@@ -349,6 +375,7 @@ console.log("fin document ready");
             digitGroupSymbol: '.',
             symbol: '€',
             positiveFormat: '%n <span class="euro">%s</span>',
+            roundToDecimalPlace:-2,
     });
          
     $("#salarios_meses").tablesorter({ 
