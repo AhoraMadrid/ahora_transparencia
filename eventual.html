@@ -96,7 +96,7 @@
                       <th>apellidos</th>
                       <th>categoría</th>
                       <th>Organismo</th>
-                      <th>sueldo limitado neto</th> 
+                      <th>Sueldo oficial bruto anual</th> 
                       <th>sueldo neto al mes</th> 
                       <th>goteo</th>
                       <th>donaciones</th>
@@ -310,7 +310,7 @@
         }); 
         
         // table > monts
-        var myTable =  $("#salarios_meses > tbody");
+        /*var myTable =  $("#salarios_meses > tbody");
         for (i = 0; i < mesesL.length; i++) { 
             var thisM = mesesL[i];            
             var myRow = "<tr>";
@@ -320,7 +320,7 @@
             myRow += "<td class='money'>" + mesesTot[thisM].goteo + "</td>" ;
             myRow += "<td class='money'>" + mesesTot[thisM].donaciones + "</td>" ;                        
             $(myTable).append( myRow);
-        }        
+        }       */ 
         
         // 
         var myTable =  $("#salarios_eventuales > tbody");             
@@ -362,7 +362,7 @@
               }        
         }//end for
          
-        window.setTimeout(initC, 400); //ñaaaapa. Si no hay un poco de retraso a veces no ejecuta la funcion de cards
+        window.setTimeout(initC, 200); //ñaaaapa. Si no hay un poco de retraso a veces no ejecuta la funcion de cards
         } // end complete loading json
         
      }); // end pepa parse
