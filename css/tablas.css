@@ -842,15 +842,20 @@ td.c8{
 .accordion-toggle{
 	cursor: pointer;
 }
-div.accordian-body {
-	background-color: #ccc;
+div.popover-content {
+	background-color: #fff;
 	width: 100%;
 	padding-left: 5%
 }
-
-div.accordian-body span.money{
+div.popover{
+	max-width: 300px;
+}
+div.popover-content span.money{
 	font-weight: bold;display: inline-block;
 	margin-right: 1em;
+}
+div.popover-content div{
+	width:300px;
 }
 
 h3.por100{

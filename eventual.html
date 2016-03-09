@@ -335,30 +335,34 @@
             else {
               // eventual 
               //info de los tipos de donantes
-                  var myRow = '<tr data-toggle="collapse" data-target="#infoextra'+i+'" class="accordion-toggle">';
-                  myRow += "<td><i class='fa fa-caret-down'> </i> " + obj.nombre + "</td>" ; 
+                  var donacioneshtml=""
+                  for (var j=0 ; j<obj.donacionesLista.length; j++){ 
+                        var parDonacion=obj.donacionesLista[j];                   
+                        donacioneshtml +='<div><i class="fa fa-caret-right"></i> <span> '+ parDonacion.favor + ": </span>" ; 
+                        donacioneshtml += "<span class='money'>" + parDonacion.donacion + "</span> </div>" ;  
+                  }
+                 
+                  var myRow = '<tr >';
+                  myRow += "<td>" +    obj.nombre + "</td>" ; 
                   myRow += "<td>" + obj.apellidos + "</td>" ; 
                   myRow += "<td>" + obj.categoria + "</td>" ; 
                   myRow += "<td>" + obj.organismo + "</td>" ;
                   myRow += "<td class='money'>" + obj.nominal + "</td>" ;
                   myRow += "<td class='money'>" + obj.percibido + "</td>" ;
                   myRow += "<td class='money'>" + obj.goteo + "</td>" ;
-                  myRow += "<td class='money'>" + obj.donaciones + "</td> </tr>" ;   
+                  myRow += "<td > <span class='money'>" + obj.donaciones + '</span>' +
+                  '<button style="float:right" type="button" class="popovertable-'+i+' btn btn-default btn-xs" data-container="body" data-toggle="popover" data-placement="bottom" > + </button>'  +
+                  "</td> </tr>" ;   
                   myRow+= ' <tr> <td colspan="8" class="hiddenRow"> <div class="accordian-body collapse" id="infoextra'+i+ '">'; 
-                  for (var j=0 ; j<obj.donacionesLista.length; j++){ 
-                        var parDonacion=obj.donacionesLista[j];                   
-                        myRow +='<i class="fa fa-caret-right"></i> <span> '+ parDonacion.favor + ": </span>" ; 
-                        myRow += "<span class='money'>" + parDonacion.donacion + "</span> " ;  
-                  }
-                 
+                  
                  myRow+="</div> </td> </tr>"
                   $(myTable).append( myRow);
+                 $('.popovertable-'+i).popover({content:donacioneshtml, html:true})
                 //  console.log("append eventual");                        
-              }
-            //console.log("fin append concejal" + obj.nombre);
-        
-        }
-        window.setTimeout(initC, 200); //ñaaaapa. Si no hay un poco de retraso a veces no ejecuta la funcion de cards
+              }        
+        }//end for
+         
+        window.setTimeout(initC, 400); //ñaaaapa. Si no hay un poco de retraso a veces no ejecuta la funcion de cards
         } // end complete loading json
         
      }); // end pepa parse
