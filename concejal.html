@@ -59,6 +59,8 @@
     <p id="miCargo"> </p>
     <p id="miDescripcion">
     </p>
+    
+
     </div>
     
      <div class="col-md-3 nopaddingR">
@@ -71,7 +73,7 @@
      <div class="row">
      
      <div class="col-md-12 noPadding" id="totalG">
-     	<div class="bg_tot bloque">
+     	<div class="bg_tot bloque b1">
      	<p class="concepto">salario bruto anual</p>
     	<p class="importe money">total</p>
      	</div>
@@ -88,11 +90,11 @@
                      <p class="importe money"> <span> </span></p>
                  </div>
                 
-                 <div class="bg_t3 bloque">
+                 <div class="bg_t3 bloque b2">
                      <p class="concepto">Proyectos vía Goteo</p>
                      <p class="importe "><span> </span></p>
                  </div>
-                 <div class="bg_t4 bloque">
+                 <div class="bg_t4 bloque b2">
                      <p class="concepto">Donaciones</p>
                      <p class="importe "><span> </span></p>
                  </div>
@@ -104,6 +106,8 @@
      
      <div class="row separaMas">
      <div class="col-md-12 noPadding">
+        <p id="miInfoExtra">
+    </p>
          <p>La diferencia entre el salario bruto oficial y el salario que se cobra realmente se destina por un lado a financiar proyectos a través de la plataforma de crowdfounding “Goteo” y por otro a financiar organizaciones sin ánimo de lucro que cada cual elije.</p>
      
      </div>
@@ -205,13 +209,16 @@
              moment.locale('es');  // translate dates to es format
              
              
-            /**[0]  nombre [1] :cargo [2] descrip
+            /**El array de datos de cada concejal contiene
+            [0]  nombre [1] :cargo 
+            [2] descrip
             //[3]:salario bruto anual 
             [4] bruto mensual 14 pagas 
             [5] salario bruto menual 12 pagas 
             [6] salario neto anual 
             [7] salario neto mensual 14 pagas 
             [8] neto anual 12 pagas
+            [9] Info extra
             **/
              
              /*** datos del concejal **/
@@ -219,7 +226,10 @@
                 infoConcejales=data.concejales
                 data.concejales[thisID]
                 $("#miCargo").text(data.concejales[thisID][1])
-                $("#miDescripcion").text(data.concejales[thisID][2])
+                $("#miDescripcion").html(data.concejales[thisID][2])
+
+                if( ! (data.concejales[thisID][9]===undefined ) ) $("#miInfoExtra").html(data.concejales[thisID][9])
+
                 $(".bg_t1 .importe span").text(data.concejales[thisID][6]) //neto anual
 				
                   /*var items = [];
