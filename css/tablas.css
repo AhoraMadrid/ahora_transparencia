@@ -165,24 +165,35 @@ table.tablesorter tbody td.money{
 	margin-top: 1.5em;
 }
 
-.bloque{
-	
+.bloque{	
 	color: #fff;
 	display: inline-block;
 	/*padding: 1em;*/
 	margin: 0;
 	overflow: hidden;
 	float: left;
+	
+	-webkit-border-radius: 0px 0px 20px 0px;
+	-moz-border-radius: 0px 0px 20px 0px;
+	border-radius: 0px 0px 20px 0px;
+	
 }
 
 .bloque p.concepto{
-font-weight: 300;
-
-margin-bottom: 0;
-padding-left: 1em;
-padding-top: 0.5em;
-color: rgba(255, 255, 255, .75);
+	font-weight: 300;
+	margin-bottom: 0;
+	padding-left: 1em;
+	padding-top: 0.5em;
+	color: rgba(255, 255, 255, .75);
 }
+
+.bloque.b1{
+	border-bottom: 3px solid #fff;
+}
+
+.bloque.b2{
+	border-left: 3px solid #fff;
+	}
 
 .bloque p.importe{
 	font-weight: 700;

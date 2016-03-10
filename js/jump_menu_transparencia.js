@@ -2,7 +2,7 @@
 $('#jump_menu').append( "<option value='index.html'>Seleccione una opción</option>" );
 $('#jump_menu').append( "<option value='municipales_2015.html'>Campaña Elecciones Municipales 2015</option>" );
 $('#jump_menu').append( "<option value='salarios.html'>Salario de Concejales</option>" );
-$('#jump_menu').append( "<option value='eventuales.html' disabled>Salarios Personal eventual</option>" );
+$('#jump_menu').append( "<option value='eventual.html'>Salarios Personal eventual</option>" );
 $('#jump_menu').append( "<option value='balance_2015.html' disabled>Gastos e Ingresos 2015</option>" );
 
 // jump function

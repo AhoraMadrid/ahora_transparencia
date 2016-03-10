@@ -33,49 +33,63 @@
 <body>
 
     <div class="container">
+    
     <div class="row" id="intro">
-    
-    <div class="col-md-7 nopaddingL">
-      <p>ahora madrid: transparencia</p>
-          <hr/>
-      <p class="bigger">En nuestra voluntad de trasparencia os mostramos el Presupuesto de Ahora 
-      Madrid y los ingresos que llevamos hasta el momento.
-      </p>
       
-      <p>Nuestra intención es publicar al detalle de cada gasto pasada la campaña y una vez contrastadas las facturas que estamos recibiendo. Igual con los 
-      ingresos, ya que debemos verificar los datos de las donaciones y 
-      micro-créditos.</p>
+      <div class="col-md-12 noPadding">
     
-    </div>
-    
-    <div class="col-md-5 text-right nopaddingR">
-      <p>&nbsp;</p>
-      <hr/>
-      <select>
-        <option value="volvo">Gastos Campaña Elecciones Municipales 2015</option>
-        <option value="saab">Ingresos Campaña Elecciones Municipales 2015</option>
-        <option value="mercedes">Gastos Ejercicio 2015</option>
-        <option value="audi">Ingresos Ejercicio 2015</option>
-      </select>
+    <ol class="breadcrumb">
+      <li><a href="http://ahoramadrid.org/">ahora madrid</a></li>
+      <li><a href="index.html">transparencia</a></li>
       
-      <hr/>
-      
-      <p><em>última actualización: 20 de mayo, 2015</em></p>
-      <p><a href="datos_03/gastos.csv"><i class="fa fa-download" style="padding-right: 1em;"></i> <small>descargar .csv</small></a></p>
+      <li class="active">Salarios Personal Eventual</li>
+    </ol>
+     <hr style="margin-bottom: 0;"/>
       </div>
+      
+     </div>
+     
+    
+    <!-- cabecera -->
+     <div class="row" id="cabecera">
+     
+     <div class="col-md-7 nopaddingL">
+     <h2>Salarios Personal Eventual</h2>
+     </div>
+     
+     <div class="col-md-5 text-right noPadding">
+      <select id="jump_menu"></select>
     </div>
+     </div>
+     
     
     <div class="row">
-      <div class="col-md-12 noPadding">
-        <hr/>
-        <h2>ingresos por salarios</h2>
-        <p>Lectores legere me lius quod ii legunt saepius claritas est etiam processus dynamicus qui. Facer possim assum, typi non habent claritatem insitam est usus legentis in iis qui facit eorum. Demonstraverunt sequitur mutationem consuetudium lectorum mirum est notare quam.
+        
+        <div class="col-md-7 nopaddingL">
+        
+         <hr/>
+    
+        <p >Concejales y personal eventual tienen un salario bruto oficial, estipulado por el pleno del ayuntamiento.</p>
+        <p class="bigger">El Reglamento económico de Ahora Madrid establece que el salario que efectivamente se cobre sea de <strong>cuatro salarios mínimos brutos</strong>.</p>
+        <p>Esta cantidad se incrementará en un tercio del salario mínimo por cada descendiente a cargo y también se han establecido excepciones por situaciones especiales, debidamente justificadas.
+            <br/>  
         </p>
-      </div>
-    </div>
+        
+         
+        </div>
+        
+        <div class="col-md-5 text-right nopaddingR">
+            <hr/>
+        
+       <p><em>última actualización: 10 de marzo 2016</em></p>
+       
+       <!-- <p><a href="datos_03/gastos.csv"><i class="fa fa-download" style="padding-right: 1em;"></i> <small>descargar .csv</small></a></p>-->
+        
+        </div>
+        </div>
     
     
-     
+      <div class="row">
      <div class="col-md-12 noPadding">
       <hr/>
      
@@ -107,24 +121,12 @@
                   </table>
             </div>
         </div>
-
-
-
-      
-      
-      
-         </div>
+</div>
+</div>
      
     </div>
     
-    <footer>
-    <div class="row">
-    <div class="col-md-12 noPadding">
-    footer
-    </div>
-    </div>
     
-    </footer>
     
     
     </div> <!-- end container -->
@@ -155,8 +157,14 @@
       <!-- cookies -->
      <script src="js/js.cookie.js"></script>
      
-     
+      <script src="js/jump_menu_transparencia.js"></script>
      <script>
+     
+     // jump menu
+     $(document).ready(function() { 
+     	var myPage = "eventual.html";
+     	$("#jump_menu").find("option[value='" + myPage +"']").attr('selected', true);
+      }); 
      
       
      var totC = {nominal:0.0, percibido:0.0, goteo:0.0, donacion:0.0, c:0.0, e:0.0};
