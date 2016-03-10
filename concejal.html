@@ -282,12 +282,12 @@ function parseCsv(){
                     if(obj["donacion_"+i] === undefined  || obj["favor_"+i]=== undefined) continue;
                     else {
                     
-                    	if( parseFloat(obj["donacion_"+i]) > 0){
+                    	if( Number(obj["donacion_"+i]) > 0){
                     		myRow += "<tr> <td>" + obj["favor_"+i] + "</td>" ; 
                     		myRow += "<td class='money'>" + obj["donacion_"+i] + "</td> </tr>" ;
                     		
                     		// 
-                    		totC['donacion'] += parseFloat(obj["donacion_"+i]);
+                    		totC['donacion'] += Number(obj["donacion_"+i]);
                     	}
                     	
                        
@@ -296,11 +296,11 @@ function parseCsv(){
                     
                  $(myTable).append( myRow);
 
-                 totC['nominal'] += parseFloat(obj.s_nominal);
-                 totC['percibido'] += parseFloat(obj.s_percibido);
-                 totC['goteo'] += parseFloat(obj.goteo);
-                // totC['donacion'] += parseFloat(obj.donacion_1);
-                // totC['donacion'] += parseFloat(obj.donacion_2);
+                 totC['nominal'] += Number(obj.s_nominal);
+                 totC['percibido'] += Number(obj.s_percibido);
+                 totC['goteo'] += Number(obj.goteo);
+                // totC['donacion'] += Number(obj.donacion_1);
+                // totC['donacion'] += Number(obj.donacion_2);
                 
              }                           
 
@@ -331,12 +331,19 @@ function parseCsv(){
          var obj = value;
 
          // tot by people // all people
-         peopleData[obj.id].nominal += parseFloat(obj.s_nominal);
-         peopleData[obj.id].percibido += parseFloat(obj.s_percibido);
-         peopleData[obj.id].goteo += parseFloat(obj.goteo);
-         peopleData[obj.id].donaciones += parseFloat(obj.donacion_1);
-         peopleData[obj.id].donaciones += parseFloat(obj.donacion_2);
-             
+         peopleData[obj.id].nominal += Number(obj.s_nominal);
+         peopleData[obj.id].percibido += Number(obj.s_percibido);
+         peopleData[obj.id].goteo += Number(obj.goteo);
+
+         for (var i=0 ; i<10; i++){
+             if(obj["donacion_"+i] === undefined) continue;
+             else {
+                  
+               if( Number(obj["donacion_"+i]) > 0){
+                 peopleData[obj.id].donaciones += Number(obj["donacion_"+i]);
+               }
+             }
+         }
     }); 
     
     
