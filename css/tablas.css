@@ -907,6 +907,11 @@ p.parcial span.money{
 	font-weight: 300;
 }
 
+#miInfoExtra{
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
 .separa{
 	margin-top: 1.5em;
 	margin-bottom: 1.5em;
