@@ -310,8 +310,7 @@ console.log("fin document ready");
                     mesesRot.push(mesesR[i+1]);
                 }
             }
-            
-            
+
         $.each( results.data, function( index, value ) {
              var obj = value;
              if( ("fecha" in obj)==false || ("id" in obj) == false || ("nombre" in obj) == false  || ("apellidos" in obj)== false) return true;
@@ -321,28 +320,26 @@ console.log("fin document ready");
              var miMM_AAAA = miMMMM + "_" + miAAAA;
              
              // tot by people
-             peopleData[obj.id].nominal += parseFloat(obj.s_nominal);
-             peopleData[obj.id].percibido += parseFloat(obj.s_percibido);
-             peopleData[obj.id].goteo += parseFloat(obj.goteo);
-             peopleData[obj.id].donaciones += parseFloat(obj.donacion_1);
-             peopleData[obj.id].donaciones += parseFloat(obj.donacion_2);
-              
-             mesesTot[miMM_AAAA].nominal += parseFloat(obj.s_nominal);
-             mesesTot[miMM_AAAA].percibido += parseFloat(obj.s_percibido);
-             mesesTot[miMM_AAAA].goteo += parseFloat(obj.goteo);
-             mesesTot[miMM_AAAA].donaciones += parseFloat(obj.donacion_1);
-             mesesTot[miMM_AAAA].donaciones += parseFloat(obj.donacion_2);
-              
-             // totals
-            // console.log(obj)
-             totC['nominal'] += parseFloat(obj.s_nominal);
-             totC['percibido'] += parseFloat(obj.s_percibido);
-             totC['goteo'] += parseFloat(obj.goteo);
-             totC['donacion'] += parseFloat(obj.donacion_1);
-             totC['donacion'] += parseFloat(obj.donacion_2);
-              
-             totC[obj.status] += parseFloat(obj.s_percibido);
-                
+             peopleData[obj.id].nominal += Number(obj.s_nominal);
+             peopleData[obj.id].percibido += Number(obj.s_percibido);
+             peopleData[obj.id].goteo += Number(obj.goteo);
+
+             mesesTot[miMM_AAAA].nominal += Number(obj.s_nominal);
+             mesesTot[miMM_AAAA].percibido += Number(obj.s_percibido);
+             mesesTot[miMM_AAAA].goteo += Number(obj.goteo);
+
+             totC['nominal'] += Number(obj.s_nominal);
+             totC['percibido'] += Number(obj.s_percibido);
+             totC['goteo'] += Number(obj.goteo);
+             totC[obj.status] += Number(obj.s_percibido);
+
+             for (i = 1; i <= 8; i++) { 
+               if (obj['donacion_'+i]) {
+                 peopleData[obj.id].donaciones += Number(obj['donacion_'+i]);
+                 mesesTot[miMM_AAAA].donaciones += Number(obj['donacion_'+i]);
+                 totC['donacion'] += Number(obj['donacion_'+i]);
+               }
+             }
         }); 
         
         // table > monts
