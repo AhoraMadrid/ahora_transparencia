@@ -86,7 +86,7 @@
          <div class="col-md-12 noPadding">
              <div id="partes">
                  <div class="bg_t1 bloque">
-                     <p class="concepto">Salario neto limitado mensual</p>
+                     <p class="concepto">Salario neto limitado anual</p>
                      <p class="importe money"> <span> </span></p>
                  </div>
                 
@@ -195,7 +195,6 @@
      var c ;
          
      $(document).ready(function() { 
-     
      
              c = Cookies.get('concejal')
              thisID = "c02";             
@@ -339,8 +338,6 @@ function parseCsv(){
          peopleData[obj.id].donaciones += parseFloat(obj.donacion_2);
              
     }); 
-    
-
     
     
     // write total(s)
