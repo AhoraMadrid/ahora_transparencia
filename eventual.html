@@ -106,14 +106,14 @@
               <table id="salarios_eventuales" class="table tablesorter"> 
                   <thead> 
                   <tr> 
-                      <th>nombre</th> 
-                      <th>apellidos</th>
-                      <th>categoría</th>
+                      <th>Nombre</th> 
+                      <th>Apellidos</th>
+                      <th>Categoría</th>
                       <th>Organismo</th>
                       <th>Sueldo oficial bruto anual</th> 
-                      <th>sueldo neto al mes</th> 
-                      <th>goteo</th>
-                      <th>donaciones</th>
+                      <th>Salario neto según reglamento AM</th> 
+                      <th>Goteo</th>
+                      <th>Donaciones</th>
                    </tr> 
                    
                   </thead> 
@@ -282,6 +282,7 @@
              peopleData[obj.id].donaciones += Number(obj.donacion_3);
              peopleData[obj.id].donaciones += Number(obj.donacion_4);
              peopleData[obj.id].donaciones += Number(obj.donacion_5);
+             peopleData[obj.id].donaciones += Number(obj.donacion_6);
              peopleData[obj.id].donacionesLista=[]
              //genero la estructura de donaciones
              for (var j=0 ; j<10; j++){
@@ -289,7 +290,7 @@
                 else {                  
                   if( parseFloat(obj["donacion_"+j]) > 0){                    
                     peopleData[obj.id].donacionesLista.push( 
-                        { donacion: obj["donacion_"+j], 
+                        { donacion: Math.floor(obj["donacion_"+j]), 
                           favor:obj["favor_"+j] } 
                       ) 
                   }
@@ -304,6 +305,7 @@
              mesesTot[miMM_AAAA].donaciones += Number(obj.donacion_3);
              mesesTot[miMM_AAAA].donaciones += Number(obj.donacion_4);
              mesesTot[miMM_AAAA].donaciones += Number(obj.donacion_5);
+             mesesTot[miMM_AAAA].donaciones += Number(obj.donacion_6);
               
              // totals
             // console.log(obj)
