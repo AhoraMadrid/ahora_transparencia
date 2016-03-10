@@ -35,9 +35,9 @@ function generateCards( peopleIDcsv, peopleDataCsv, concejalInfoStruct){
             // excepción Barbero
             if(concejalInfoStruct[miID][8] === undefined){
             
-            $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido 2015 <span class=' money'>" + "n/a" +"</span> </p>");
+            $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido 2015 <span class=' moneyy'>" + "Excepción carta financiera" +"</span> </p>");
              $(div).append("<hr/>");
-            $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido mensual <span class=' money'>" + "n/a" +"</span> </p>");
+            $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido mensual <span class=' moneyy'>" + "Excepción carta financiera" +"</span> </p>");
             
             } else {
             
