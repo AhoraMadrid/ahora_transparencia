@@ -43,7 +43,7 @@ function generateCards( peopleIDcsv, peopleDataCsv, concejalInfoStruct){
             
             $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido 2015 <span class=' money'>" + concejalInfoStruct[miID][8]*6 +"</span> </p>");
              $(div).append("<hr/>");
-            $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido mensual <span class=' money'>" + concejalInfoStruct[miID][8] +"</span> </p>");
+            $(div).append( "<p class='parcial c4'> Salario neto mensual<br/>según reglamento AM <span class=' money'>" + concejalInfoStruct[miID][8] +"</span> </p>");
             
             }
             
