@@ -34,8 +34,8 @@ function generateCards( peopleIDcsv, peopleDataCsv, concejalInfoStruct){
            
 console.log(concejalInfoStruct[miID]); 
 
-            // excepción Manuela
-            if (concejalInfoStruct[miID][1] == 'Alcaldesa') {
+            // excepción Manuela (de momento no)
+            if (0 && concejalInfoStruct[miID][1] == 'Alcaldesa') {
 
             $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido 2015 <span class=' money'>" + "Excepción" +"</span> </p>");
              $(div).append("<hr/>");
