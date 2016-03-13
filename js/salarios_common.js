@@ -2,7 +2,6 @@ function generateCards( peopleIDcsv, peopleDataCsv, concejalInfoStruct){
     for (i = 0; i < peopleIDcsv.length; i++) {         
         var miID = peopleIDcsv[i];
         var obj = peopleDataCsv[miID];
-        // console.log(obj.nombre);            
         if(obj.status === "c"){
             // concejal
             var div = document.createElement("div");
@@ -20,7 +19,6 @@ function generateCards( peopleIDcsv, peopleDataCsv, concejalInfoStruct){
             $(div).append( "<div class='bg_t4 bloque'></div>" );*/
              
             // content: image
-          //  console.log(obj)
             $(div).append( "<img src='img/people/"+peopleIDcsv[i]+".jpg' />" );
             $(div).append( "<p class='nombre'>" + obj.nombre.toLowerCase() + "<br/><span class='apellido'>" +obj.apellidos.toLowerCase() +"</span></p>" );
             $(div).append("<hr/>");
@@ -32,8 +30,6 @@ function generateCards( peopleIDcsv, peopleDataCsv, concejalInfoStruct){
             $(div).append( "<p class='parcial c4'>Donaciones:  <span class='money'>"  + obj.donaciones + "</span> </p>" );
             $(div).append("<hr/>");
            
-console.log(concejalInfoStruct[miID]); 
-
             // excepción Manuela (de momento no)
             if (0 && concejalInfoStruct[miID][1] == 'Alcaldesa') {
 
@@ -74,6 +70,5 @@ console.log(concejalInfoStruct[miID]);
             $("#concejales").append(div);  
         
             } 
-        //console.log("fin append concejal" + obj.nombre);        
     }
 }

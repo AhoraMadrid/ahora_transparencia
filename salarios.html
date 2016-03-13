@@ -233,7 +233,6 @@
             });
 
 	
-	console.log("fin document ready");
     }); //end document ready 
      
   function parseCSV(){
@@ -242,8 +241,6 @@
         header: true,
         delimiter: "\t",    
         complete: function(results) {
-            console.log("parsed");
-             //console.log(results.data);
             resultados=results
             var meses = []; // todos MM_AAAA
             var mesesR = []; // rótulos MM, AAAA
@@ -264,14 +261,12 @@
                  var mesYanno = miMes +", " + miAnno;
                  meses.push(mes_anno);
                  mesesR.push(mesYanno);
-                 //console.log(miFecha);
                  peopleIDRow.push(obj.id); 
                  // people data
                  // create new object > add to array
                  peopleDataRow[obj.id] = {nombre: obj.nombre, apellidos: obj.apellidos, status: obj.status, nominal: 0.0, percibido: 0.0, goteo: 0.0, donaciones: 0.0};
             }); 
             
-            //console.log(peopleID);
             // unique ID
             
             // var uniqueNames = [];
@@ -282,14 +277,11 @@
             });
             
             for (i = 0; i < peopleID.length; i++) { 
-                //console.log(peopleID[i]);
                 var ID = peopleID[i];
                 var P = peopleDataRow[ID];
                 peopleData[ID] = P;
             }
             
-            //console.log(peopleData);
-                        
             var peopleIDRow = []; // clean up
             var peopleDataRow = [];
                     
@@ -405,7 +397,6 @@
 }   
      
     var initC=function() {
-     console.log("init");
     
     $('.money').formatCurrency({
             decimalSymbol: ',',
