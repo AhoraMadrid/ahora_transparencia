@@ -30,12 +30,12 @@ function generateCards( peopleIDcsv, peopleDataCsv, concejalInfoStruct){
             $(div).append( "<p class='parcial c4'>Donaciones:  <span class='money'>"  + obj.donaciones + "</span> </p>" );
             $(div).append("<hr/>");
            
-            // excepción Manuela (de momento no)
-            if (0 && concejalInfoStruct[miID][1] == 'Alcaldesa') {
+            // excepción Manuela
+            if (concejalInfoStruct[miID][1] == 'Alcaldesa') {
 
-            $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido 2015 <span class=' money'>" + "Excepción" +"</span> </p>");
+            $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido 2015 <span class=' money'>" + concejalInfoStruct[miID][8]*5 +"</span> </p>");
              $(div).append("<hr/>");
-            $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido mensual <span class=' money'>" + "Excepción" +"</span> </p>");
+            $(div).append( "<p class='parcial c4'> Salario neto mensual<br/>según reglamento AM <span class=' money'>" + concejalInfoStruct[miID][8] +"</span> </p>");
 
             // excepción Barbero
             } else if (concejalInfoStruct[miID][8] === undefined) {
@@ -43,7 +43,6 @@ function generateCards( peopleIDcsv, peopleDataCsv, concejalInfoStruct){
             $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido 2015 <span class=' money'>" + "Excepción carta financiera" +"</span> </p>");
              $(div).append("<hr/>");
             $(div).append( "<p class='parcial c4'> Salario neto<br/>reducido mensual <span class=' money'>" + "Excepción carta financiera" +"</span> </p>");
-
             
             } else {
             
