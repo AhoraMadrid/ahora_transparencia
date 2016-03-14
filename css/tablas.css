@@ -866,7 +866,7 @@ div.popover-content span.money{
 	margin-right: 1em;
 }
 div.popover-content div{
-	width:300px;
+	width:auto;
 }
 
 h3.por100{

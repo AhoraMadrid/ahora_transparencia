@@ -359,7 +359,7 @@
                   for (var j=0 ; j<obj.donacionesLista.length; j++){ 
                         var parDonacion=obj.donacionesLista[j];                   
                         donacioneshtml +='<div><i class="fa fa-caret-right"></i> <span> '+ parDonacion.favor + ": </span>" ; 
-                        donacioneshtml += "<span class='money'>" + parDonacion.donacion + "</span> </div>" ;  
+                        donacioneshtml += "<span class='money2'>" + parDonacion.donacion + "</span> </div>" ;  
                   }
                  
                   var myRow = '<tr >';
@@ -378,21 +378,33 @@
                  myRow+="</div> </td> </tr>"
                   $(myTable).append( myRow);
                  $('.popovertable-'+i).popover({content:donacioneshtml, html:true})
+
                 //  console.log("append eventual");                        
               }        
         }//end for
          
-        window.setTimeout(initC, 200); //ñaaaapa. Si no hay un poco de retraso a veces no ejecuta la funcion de cards
+        window.setTimeout(initC, 300); //ñaaaapa. Si no hay un poco de retraso a veces no ejecuta la funcion de cards
+        
         } // end complete loading json
         
      }); // end pepa parse
-console.log("fin document ready");
+
+
+
     }); //end document ready 
      
      
      
     var initC=function() {
-     console.log("init");
+      $('[data-toggle="popover"]').on('shown.bs.popover', function(){
+          $('.money2').formatCurrency({
+              decimalSymbol: ',',
+              digitGroupSymbol: '.',
+              symbol: '€',
+              positiveFormat: '%n <span class="euro">%s</span>',
+              roundToDecimalPlace:-2,
+          });         
+    });
     
     $('.money').formatCurrency({
             decimalSymbol: ',',
