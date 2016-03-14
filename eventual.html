@@ -28,6 +28,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="js/iframeResizer.contentWindow.min.js"></script>
+    <script>
+      document.domain = 'conoce.ahoramadrid.org';
+      iFrameResize({log: false});
+    </script>
   </head>
 
 
@@ -40,8 +44,8 @@
       <div class="col-md-12 noPadding">
     
     <ol class="breadcrumb">
-      <li><a href="http://ahoramadrid.org/">ahora madrid</a></li>
-      <li><a href="index.html">transparencia</a></li>
+      <li><a href="https://ahoramadrid.org/">ahora madrid</a></li>
+      <li><a href="/transparencia">transparencia</a></li>
       
       <li class="active">Salarios Personal Eventual</li>
     </ol>
@@ -172,7 +176,7 @@
      
      // jump menu
      $(document).ready(function() { 
-     	var myPage = "eventual.html";
+     	var myPage = "/transparencia/salarios-personal-eventual";
      	$("#jump_menu").find("option[value='" + myPage +"']").attr('selected', true);
       }); 
      
@@ -197,7 +201,6 @@
         header: true,
         delimiter: "\t",    
         complete: function(results) {
-             //console.log(results.data);         
             
             resultados=results
             $.each( results.data, function( index, value ) {
@@ -205,14 +208,12 @@
                  var obj = value;
 
                  if(  ("Apellidos" in obj) == false  || ("Nombre" in obj)== false) return true;
-                //console.log(obj)
                  var miMes = moment(obj.fecha, "DD/MM/YYYY").format("MMMM");
                  var miAnno = moment(obj.fecha, "DD/MM/YYYY").format("YYYY");
                  var mes_anno = miMes +"_" + miAnno;
                  var mesYanno = miMes +", " + miAnno;
                  meses.push(mes_anno);
                  mesesR.push(mesYanno);
-                 //console.log(miFecha);
                  peopleIDRow.push(obj.id); 
                  // people data
                  // create new object > add to array
@@ -224,7 +225,6 @@
                   status: 'e', nominal: 0.0, percibido: 0.0, goteo: 0.0, donaciones: 0.0};
             }); 
             
-            //console.log(peopleID);
             // unique ID
             
             // var uniqueNames = [];
@@ -235,15 +235,11 @@
             });
             
             for (i = 0; i < peopleID.length; i++) { 
-                //console.log(peopleID[i]);
                 var ID = peopleID[i];
                 var P = peopleDataRow[ID];
                 peopleData[ID] = P;
-                //console.log(peopleData[ID])
             }
             
-            //console.log(peopleData);
-                        
             //peopleIDRow = []; // clean up
             //peopleDataRow = [];
                     
@@ -282,7 +278,6 @@
              var miMM_AAAA = miMMMM + "_" + miAAAA;
              
              // tot by people
-             //console.log('suela', obj);
 
              peopleData[obj.id].nominal += Number(obj.s_nominal);
              peopleData[obj.id].percibido += Number(obj.s_percibido);
@@ -318,7 +313,6 @@
              mesesTot[miMM_AAAA].donaciones += Number(obj.donacion_6);
               
              // totals
-            // console.log(obj)
              totC['nominal'] += parseFloat(obj.s_nominal);
              totC['percibido'] += parseFloat(obj.s_percibido);
              totC['goteo'] += parseFloat(obj.goteo);
@@ -347,7 +341,6 @@
         for (i = 0; i < peopleID.length; i++) {         
             var miID = peopleID[i];
             obj = peopleData[miID];
-             console.log(obj);
             
             if(obj.status === "c"){                
               continue;
@@ -379,7 +372,6 @@
                   $(myTable).append( myRow);
                  $('.popovertable-'+i).popover({content:donacioneshtml, html:true})
 
-                //  console.log("append eventual");                        
               }        
         }//end for
          
@@ -425,7 +417,6 @@
         });     
       
       // isotope
-      console.log($(''))
       var $grid = $('#concejales').isotope({
         // options
         itemSelector: '.card',

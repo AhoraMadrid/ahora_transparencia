@@ -27,6 +27,11 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="js/iframeResizer.contentWindow.min.js"></script>
+    <script>
+      document.domain = 'conoce.ahoramadrid.org';
+      iFrameResize({log: false});
+    </script>
   </head>
 
 
@@ -40,9 +45,9 @@
       <div class="col-md-12 noPadding">
     
     <ol class="breadcrumb">
-      <li><a href="http://ahoramadrid.org/">ahora madrid</a></li>
-      <li><a href="index.html">transparencia</a></li>
-      <li><a href="salarios.html">concejales</a></li>
+      <li><a href="https://ahoramadrid.org/">ahora madrid</a></li>
+      <li><a href="/transparencia">transparencia</a></li>
+      <li><a href="/transparencia/salarios-concejales">concejales</a></li>
       <li class="active"><span id="me">Mi Nombre</span></li>
     </ol>
      <hr style="margin-bottom: 0;"/>
@@ -443,6 +448,7 @@ function parseCsv(){
         var c = $(this ).data( "id" ); // 52
         Cookies.set('concejal', c, { expires: 7, path: '' });
         window.location.href = "concejal.html";
+        window.parent.jQuery("body").animate({scrollTop:0}, 'slow');
         // alert( "Handler for " + c);
       });     
      }
