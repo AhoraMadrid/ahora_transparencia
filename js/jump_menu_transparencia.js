@@ -8,8 +8,5 @@ $('#jump_menu').append( "<option value='balance_2015.html' disabled>Gastos e Ing
 // jump function
 $('#jump_menu').change( function() {
 	var nextPage = $(this).find(":selected").val();
-	console.log(nextPage);
-	//window.parent.jQuery(location).attr('href',nextPage);
         top.window.location.href = nextPage;
-        console.log('MENU');
 })

@@ -26,6 +26,12 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="js/iframeResizer.contentWindow.min.js"></script>
+    <script>
+      document.domain = 'conoce.ahoramadrid.org';
+      iFrameResize({log: false});
+    </script>
+
   </head>
 
   <body>
@@ -91,7 +97,7 @@
         <div class="row" id="secciones">
         
         <div class="card">
-        <a href="municipales_2015.html">
+        <a class="parent_link" href="https://conoce.ahoramadrid.org/transparencia/presupuesto-elecciones-municipales-2015/">
         <h3>Presupuesto Campaña Municipales 2015</h3>
         <hr/>
         <p>Resumen de Gastos e ingresos de la Campaña Electoral</p>
@@ -99,7 +105,7 @@
         </div>
         
         <div class="card">
-        <a href="salarios.html">
+        <a class="parent_link" href="https://conoce.ahoramadrid.org/transparencia/salarios-concejales/">
         <h3>Salarios Concejales</h3>
         <hr/>
         <p>Cuanto cobran los concejales de AM y a que destinan la reducción de su salario</p>
@@ -107,7 +113,7 @@
         </div>
         
         <div class="card" >
-       <a href="eventual.html">
+       <a class="parent_link" href="https://conoce.ahoramadrid.org/salarios-personal-eventual/">
         <h3>Salarios Personal Eventual</h3>
         <hr/>
         <p>Quienes son y cuanto cobran el personal eventual del Grupo Municipal de AM ... y a que destinan la reducción de su salario</p>
@@ -138,6 +144,7 @@
 
  <script src="js/jquery.formatCurrency-1.4.0.pack.js"></script>
  <script src="js/jump_menu_transparencia.js"></script>
+ <script src="js/salarios_common.js"></script>
  
  <script>
  

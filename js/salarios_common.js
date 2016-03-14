@@ -71,3 +71,7 @@ function generateCards( peopleIDcsv, peopleDataCsv, concejalInfoStruct){
             } 
     }
 }
+
+$(".parent_link").click(function() {
+  top.window.location.href = $(this).attr('href');
+}); 
