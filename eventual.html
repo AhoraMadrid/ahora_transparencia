@@ -124,7 +124,7 @@
                       <th>Apellidos</th>
                       <th>Categoría</th>
                       <th>Organismo</th>
-                      <th>Sueldo oficial<br/>bruto anual</th> 
+                      <th>Sueldo oficial<br/>bruto mensual</th> 
                       <th>Salario neto mensual<br/>según reglamento AM</th> 
                       <th>Goteo</th>
                       <th>Donaciones</th>
@@ -279,7 +279,7 @@
              
              // tot by people
 
-             peopleData[obj.id].nominal += Number(obj.s_nominal);
+             peopleData[obj.id].nominal += Number(obj.s_nominal/14);
              peopleData[obj.id].percibido += Number(obj.s_percibido);
              peopleData[obj.id].goteo += Number(obj.goteo);
              peopleData[obj.id].donaciones += Number(obj.donacion_1);
