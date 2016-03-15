@@ -79,20 +79,6 @@ footer{
 	
 }
 
-.noPadding {
-   padding: 0 !important;
-   margin: 0 !important;
-}
-
-.nopaddingL {
-   padding-left: 0 !important;
-   margin-left: 0 !important;
-}
-
-.nopaddingR {
-   padding-right: 0 !important;
-   margin-right: 0 !important;
-}
 
 /* tablas */
 td.money{
@@ -172,6 +158,7 @@ table.tablesorter tbody td.money{
 	margin: 0;
 	overflow: hidden;
 	float: left;
+	
 	
 	-webkit-border-radius: 0px 0px 20px 0px;
 	-moz-border-radius: 0px 0px 20px 0px;
@@ -448,8 +435,6 @@ color: #f79804;
 	padding-top: 1.5em;
 }
 
-
-
 .evidenciador{
 	padding-left: 0.25em;
 	padding-right: 0.25em;
@@ -533,7 +518,6 @@ margin-bottom: 0.75em;
 	padding-right: 0.5em;
 	
 }
-
 
 
 /* pagination */
@@ -624,8 +608,6 @@ caption{
 
 .card{
 	display: inline-block;
-	
-	width: 19.25%;
 	width: 24%;
 	
 	border: 1px solid #ccc;
@@ -953,9 +935,6 @@ p.parcial span.money{
 #secciones .card a{
 	color: inherit;
 	display: block;
-
-	
-	
 }
 
 #secciones a h3{
@@ -1005,4 +984,49 @@ p.parcial span.money{
 
 #rotulos{
 	margin-top: 1.5em;
+}
+
+@media only screen
+and (max-width: 480px) {
+
+.card{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+}
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  { 
+
+.card{
+	width: 30%;
+}
+
+}
+
+@media only screen
+and (min-width: 1024px){
+.card{
+	width: 24%;
+}
+
+.noPadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+.nopaddingL {
+   padding-left: 0 !important;
+   margin-left: 0 !important;
+}
+
+.nopaddingR {
+   padding-right: 0 !important;
+   margin-right: 0 !important;
+}
+
 }
